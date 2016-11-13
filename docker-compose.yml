@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  web:
+   build: .
+   command: bash -c "wait-for-it/wait-for-it.sh db_dev:3306 && rake db:create && rake db:migrate && rake db:seed && RAILS_ENV=development puma"
+   depends_on:
+    - db_dev
+   ports:
+     - "80:9292"
+   links:
+     - db_dev
+   volumes:
+     - .:/pipeline-api
+  worker:
+    image: pipelineapi_web_dev
+    command: bash -c "wait-for-it/wait-for-it.sh db_dev:3306 && rake jobs:work"
+  db:
+   image: mysql:latest
+   ports:
+     - "3306:3306"
+   environment:
+     MYSQL_DATABASE: pipeline_dev
+     MYSQL_ROOT_PASSWORD: root
+   volumes:
+     - ./docker-entrpoint-initdb.d:/docker-entrypoint-initdb.d
