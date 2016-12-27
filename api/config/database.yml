@@ -1,0 +1,18 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+
+development:
+  <<: *default
+  database: db
+  username: root
+  password: root
+  host: db
+
+staging:
+  <<: *default
+  database: stg
+  username: root
+  password: root
+  host: db_stg
