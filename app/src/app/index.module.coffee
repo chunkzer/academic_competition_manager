@@ -11,10 +11,10 @@ angular.module 'servicio', ['ngAnimate',
                             'rails']
   .config ($stateProvider, $urlRouterProvider) ->
     $stateProvider
-      .state "users",
-        url: "/users",
-        templateUrl: "app/views/users.html",
-        controller: "UsersCtrl"
+      .state "home",
+        url: "/home",
+        templateUrl: "app/views/home.html",
+        controller: "HomeCtrl"
       .state "events",
         url: "/events",
         templateUrl: "app/views/events.html",
@@ -28,3 +28,7 @@ angular.module 'servicio', ['ngAnimate',
   .factory "Event", (RailsResource) ->
     class Event extends RailsResource
       @configure url: "/api/events", name: "event"
+
+  .factory "PendingSubscriber", (RailsResource) ->
+    class PendingSubscriber extends RailsResource
+      @configure url: "/api/event_subscribers/pending_subscribers", name: "pending_subscriber"

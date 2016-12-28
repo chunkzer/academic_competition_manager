@@ -15,6 +15,12 @@ class EventSubscribersController < ApplicationController
     render json: @event_subscriber
   end
 
+  # GET /pending_subscribers
+  # GET /pending_subscribers.json
+  def pending_subscribers
+    @event_subscribers = EventSubscriber.where(approved: false).paginate(page: params[:page], per_page: 25)
+    render json: @event_subscribers
+  end
   # POST /event_subscribers
   # POST /event_subscribers.json
   def create

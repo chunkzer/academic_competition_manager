@@ -2,7 +2,7 @@ angular.module 'servicio'
   .config ($stateProvider, $urlRouterProvider) ->
     'ngInject'
     $stateProvider
-      .state 'home',
+      .state 'login',
         url: '/'
         templateUrl: 'app/main/main.html'
         controller: 'MainController'

@@ -9,23 +9,36 @@ if Rails.env = "development"
   User.create(role_id: 1, name: 'Jose Armando', last_name: 'Account', email: 'administrator@yopmail.com')
   User.create(role_id: 2, name: 'Juan Jose', last_name: 'Account', email: 'student@yopmail.com')
 
+  Event.create(name: "Concurso de Fisica",
+                event_date: Time.now,
+                registration_deadline: Time.now,
+                description: 'Concurso de Fisica para estudiantes de preparatoria.'
+              )
+
+  Event.create(name: "Concurso de Matematicas",
+               event_date: Time.now,
+               registration_deadline: Time.now,
+               description: 'Concurso de Matematicas para estudiantes de preparatoria.'
+               )
+
+  Requirement.create(description: "Copia de Acta de Nacimiento.")
+  Requirement.create(description: "Foto de frente.")
+
+  EventRequirement.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
+                          requirement_id: Requirement.find_by(description: "Copia de Acta de Nacimiento.").id
+                          )
+  EventRequirement.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
+                          requirement_id: Requirement.find_by(description: "Foto de frente.").id
+                          )
+
+  EventSubscriber.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
+                          user_id: User.find_by(name: 'Jose Armando').id,
+                          approved: false
+                          )
+
+  EventSubscriber.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
+                          user_id: User.find_by(name: 'Juan Jose').id,
+                          approved: false
+                          )
+
 end
-
-Event.create(name: "Concurso de Fisica",
-              event_date: Time.now,
-              registration_deadline: Time.now,
-              description: 'Concurso de Fisica para estudiantes de preparatoria.'
-            )
-
-Event.create(name: "Concurso de Matematicas",
-             event_date: Time.now,
-             registration_deadline: Time.now,
-             description: 'Concurso de Matematicas para estudiantes de preparatoria.'
-             )
-
-Requirement.create(description: "Copia de Acta de Nacimiento.")
-Requirement.create(description: "Foto de frente.")
-
-EventRequirement.create(event_id: Event.find_by(name: "Concurso de Matematicas"),
-                        requirement_id: Requirement.find_by(description: "Copia de Acta de Nacimiento")
-                        )

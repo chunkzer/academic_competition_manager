@@ -29,9 +29,6 @@ gem "daemons"
 #Active model serializer
 gem 'active_model_serializers', '~> 0.10.0'
 
-#Trello gem
-gem 'ruby-trello'
-
 #User authentication
 #gem 'authlogic', '~> 3.4.6'
 gem 'jwt'

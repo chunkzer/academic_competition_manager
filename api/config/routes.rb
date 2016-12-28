@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :requirements, except: [:new, :edit]
     resources :event_requirements, except: [:new, :edit]
-    resources :event_subscribers, except: [:new, :edit]
+    resources :event_subscribers, except: [:new, :edit] do
+      collection do
+       get 'pending_subscribers'
+      end
+    end
     resources :events, except: [:new, :edit]
     resources :documents, except: [:new, :edit]
     resources :users, except: [:new, :edit]

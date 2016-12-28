@@ -1,3 +1,3 @@
 class DocumentSerializer < ActiveModel::Serializer
-  attributes :id, :name, :user_id, :event_id
+  attributes :id, :name, :user_id, :event_id, :approved
 end
