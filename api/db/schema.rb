@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20161228101651) do
 
   create_table "documents", force: :cascade do |t|
-    t.string   "name",           limit: 255
+    t.string   "path",           limit: 255
     t.integer  "user_id",        limit: 4
     t.integer  "event_id",       limit: 4
     t.datetime "created_at",                 null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20161228101651) do
     t.datetime "updated_at",               null: false
   end
 
-  create_table "event_subscribers", force: :cascade do |t|
+  create_table "event_subscriptions", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.integer  "event_id",   limit: 4
     t.datetime "created_at",           null: false

@@ -1,0 +1,37 @@
+<div class="col-xs-12 subscription-container active-subscription">
+  <!-- candidate's name -->
+    <div class="col-xs-6 panel-body">
+      <span class="subscription-name bold-text large-text text-color__blue">{{vm.subscription.user.name}}</span>
+      <br>
+      <span class="gray-text">
+        {{vm.subscription.event.name}} |  <span class="subscription-secondary-info bold-text">{{vm.subscription.event.name}}</span>
+      </span>
+    </div>
+    <!-- candidate's contact info -->
+    <div class="col-xs-6 panel-body">
+      <span class="role-text bold-text">Correo electronico: </span>
+      <br>
+      <span class="subscription-skills gray-text">{{vm.subscription.user.email}}</span>
+    </div>
+
+    <!-- candidate's step -->
+    <div ng-if="!vm.subscription.approved" class="col-xs-4">
+      <a  ng-click="vm.isCollapsed = !vm.isCollapsed" href="" class="subscription-main-button btn btn-lg btn-default btn-step action-orange">Hay documentacion que aprobar.</a>
+    </div>
+
+    <div ng-if="vm.subscription.approved" class="col-xs-4">
+      <a ng-click="vm.isCollapsed = !vm.isCollapsed" href="" class="subscription-main-button btn btn-lg btn-default btn-step action-orange">La documentacion ya esta en orden.</a>
+    </div>
+
+</div>
+<div ng-hide="vm.isCollapsed" class="col-xs-12 subscription-container" uib-collapse="vm.isCollapsed">
+  <div ng-repeat="document in vm.subscription.documents">
+    <hr>
+      <div class="well well-lg col-xs-6 panel-body">{{document.requirement}}</div>
+      <div class="col-xs-4" center="align">
+        <a ng-if="document.path" ng-click="uploadDocument()" href="" class="subscription-main-button btn btn-lg btn-default btn-step action-gray">Aun no han subido este documento.</a>
+        <a ng-if="document.path && !document.approved" ng-click="inspectDocument()" href="" class="subscription-main-button btn btn-lg btn-default btn-step action-orange">Inspeccionar documento.</a>
+        <a ng-if="document.approved" ng-click="inspectDocument()" href="" class="subscription-main-button btn btn-lg btn-default btn-step action-blue">Documento aprobado!.</a>
+      </div>
+  </div>
+</div>

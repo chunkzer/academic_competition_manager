@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "EventSubscribers", type: :request do
+RSpec.describe "EventSubscriptions", type: :request do
   describe "GET /event_subscribers" do
     it "works! (now write some real specs)" do
       get event_subscribers_path

@@ -1,4 +1,4 @@
-class EventSubscriberSerializer < ActiveModel::Serializer
+class EventSubscriptionSerializer < ActiveModel::Serializer
   attributes :id, :user, :event, :approved, :documents
 
   def documents

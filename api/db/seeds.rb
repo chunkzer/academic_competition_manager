@@ -31,17 +31,17 @@ if Rails.env = "development"
                           requirement_id: Requirement.find_by(description: "Foto de frente.").id
                           )
 
-  EventSubscriber.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
+  EventSubscription.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
                           user_id: User.find_by(name: 'Jose Armando').id,
                           approved: false
                           )
 
-  EventSubscriber.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
+  EventSubscription.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
                           user_id: User.find_by(name: 'Juan Jose').id,
                           approved: false
                           )
 
-  EventSubscriber.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
+  EventSubscription.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
                           user_id: User.find_by(name: 'Juan Jose').id,
                           approved: false
                           )

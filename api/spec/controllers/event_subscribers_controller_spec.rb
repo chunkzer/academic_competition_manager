@@ -18,10 +18,10 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-RSpec.describe EventSubscribersController, type: :controller do
+RSpec.describe EventSubscriptionsController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
-  # EventSubscriber. As you add validations to EventSubscriber, be sure to
+  # EventSubscription. As you add validations to EventSubscription, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -33,20 +33,20 @@ RSpec.describe EventSubscribersController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # EventSubscribersController. Be sure to keep this updated too.
+  # EventSubscriptionsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
     it "assigns all event_subscribers as @event_subscribers" do
-      event_subscriber = EventSubscriber.create! valid_attributes
+      event_subscriber = EventSubscription.create! valid_attributes
       get :index, params: {}, session: valid_session
-      expect(assigns(:event_subscribers)).to eq([event_subscriber])
+      expect(assigns(:event_subscriptions)).to eq([event_subscriber])
     end
   end
 
   describe "GET #show" do
     it "assigns the requested event_subscriber as @event_subscriber" do
-      event_subscriber = EventSubscriber.create! valid_attributes
+      event_subscriber = EventSubscription.create! valid_attributes
       get :show, params: {id: event_subscriber.to_param}, session: valid_session
       expect(assigns(:event_subscriber)).to eq(event_subscriber)
     end
@@ -55,13 +55,13 @@ RSpec.describe EventSubscribersController, type: :controller do
   describe "GET #new" do
     it "assigns a new event_subscriber as @event_subscriber" do
       get :new, params: {}, session: valid_session
-      expect(assigns(:event_subscriber)).to be_a_new(EventSubscriber)
+      expect(assigns(:event_subscriber)).to be_a_new(EventSubscription)
     end
   end
 
   describe "GET #edit" do
     it "assigns the requested event_subscriber as @event_subscriber" do
-      event_subscriber = EventSubscriber.create! valid_attributes
+      event_subscriber = EventSubscription.create! valid_attributes
       get :edit, params: {id: event_subscriber.to_param}, session: valid_session
       expect(assigns(:event_subscriber)).to eq(event_subscriber)
     end
@@ -69,28 +69,28 @@ RSpec.describe EventSubscribersController, type: :controller do
 
   describe "POST #create" do
     context "with valid params" do
-      it "creates a new EventSubscriber" do
+      it "creates a new EventSubscription" do
         expect {
           post :create, params: {event_subscriber: valid_attributes}, session: valid_session
-        }.to change(EventSubscriber, :count).by(1)
+        }.to change(EventSubscription, :count).by(1)
       end
 
       it "assigns a newly created event_subscriber as @event_subscriber" do
         post :create, params: {event_subscriber: valid_attributes}, session: valid_session
-        expect(assigns(:event_subscriber)).to be_a(EventSubscriber)
+        expect(assigns(:event_subscriber)).to be_a(EventSubscription)
         expect(assigns(:event_subscriber)).to be_persisted
       end
 
       it "redirects to the created event_subscriber" do
         post :create, params: {event_subscriber: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(EventSubscriber.last)
+        expect(response).to redirect_to(EventSubscription.last)
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved event_subscriber as @event_subscriber" do
         post :create, params: {event_subscriber: invalid_attributes}, session: valid_session
-        expect(assigns(:event_subscriber)).to be_a_new(EventSubscriber)
+        expect(assigns(:event_subscriber)).to be_a_new(EventSubscription)
       end
 
       it "re-renders the 'new' template" do
@@ -107,20 +107,20 @@ RSpec.describe EventSubscribersController, type: :controller do
       }
 
       it "updates the requested event_subscriber" do
-        event_subscriber = EventSubscriber.create! valid_attributes
+        event_subscriber = EventSubscription.create! valid_attributes
         put :update, params: {id: event_subscriber.to_param, event_subscriber: new_attributes}, session: valid_session
         event_subscriber.reload
         skip("Add assertions for updated state")
       end
 
       it "assigns the requested event_subscriber as @event_subscriber" do
-        event_subscriber = EventSubscriber.create! valid_attributes
+        event_subscriber = EventSubscription.create! valid_attributes
         put :update, params: {id: event_subscriber.to_param, event_subscriber: valid_attributes}, session: valid_session
         expect(assigns(:event_subscriber)).to eq(event_subscriber)
       end
 
       it "redirects to the event_subscriber" do
-        event_subscriber = EventSubscriber.create! valid_attributes
+        event_subscriber = EventSubscription.create! valid_attributes
         put :update, params: {id: event_subscriber.to_param, event_subscriber: valid_attributes}, session: valid_session
         expect(response).to redirect_to(event_subscriber)
       end
@@ -128,13 +128,13 @@ RSpec.describe EventSubscribersController, type: :controller do
 
     context "with invalid params" do
       it "assigns the event_subscriber as @event_subscriber" do
-        event_subscriber = EventSubscriber.create! valid_attributes
+        event_subscriber = EventSubscription.create! valid_attributes
         put :update, params: {id: event_subscriber.to_param, event_subscriber: invalid_attributes}, session: valid_session
         expect(assigns(:event_subscriber)).to eq(event_subscriber)
       end
 
       it "re-renders the 'edit' template" do
-        event_subscriber = EventSubscriber.create! valid_attributes
+        event_subscriber = EventSubscription.create! valid_attributes
         put :update, params: {id: event_subscriber.to_param, event_subscriber: invalid_attributes}, session: valid_session
         expect(response).to render_template("edit")
       end
@@ -143,14 +143,14 @@ RSpec.describe EventSubscribersController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested event_subscriber" do
-      event_subscriber = EventSubscriber.create! valid_attributes
+      event_subscriber = EventSubscription.create! valid_attributes
       expect {
         delete :destroy, params: {id: event_subscriber.to_param}, session: valid_session
-      }.to change(EventSubscriber, :count).by(-1)
+      }.to change(EventSubscription, :count).by(-1)
     end
 
     it "redirects to the event_subscribers list" do
-      event_subscriber = EventSubscriber.create! valid_attributes
+      event_subscriber = EventSubscription.create! valid_attributes
       delete :destroy, params: {id: event_subscriber.to_param}, session: valid_session
       expect(response).to redirect_to(event_subscribers_url)
     end

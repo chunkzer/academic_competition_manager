@@ -1,11 +1,11 @@
 angular.module "servicio"
-  .controller "HomeCtrl", ($scope, User, PendingSubscriber) ->
+  .controller "HomeCtrl", ($scope, User, PendingSubscription) ->
     page = 1
     User.query().then (users) -> $scope.users = users
-    PendingSubscriber.query().then (subscribers) -> $scope.subscribers = subscribers
+    PendingSubscription.query().then (subscriptions) -> $scope.subscriptions = subscriptions
     $scope.nextPage = () ->
       page += 1
-      PendingSubscriber.query({page: page}).then (subscribers) -> $scope.subscribers = subscribers
+      PendingSubscription.query({page: page}).then (subscriptions) -> $scope.subscriptions = subscriptions
     $scope.previousPage = () ->
       page -= 1 if page != 1
-      PendingSubscriber.query({page: page}).then (subscribers) -> $scope.subscribers = subscribers
+      PendingSubscription.query({page: page}).then (subscriptions) -> $scope.subscriptions = subscriptions

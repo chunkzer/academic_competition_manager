@@ -1,4 +1,4 @@
-class EventSubscriber < ActiveRecord::Base
+class EventSubscription < ActiveRecord::Base
 
   belongs_to :event
   belongs_to :user

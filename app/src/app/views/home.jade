@@ -2,7 +2,7 @@ div.container
   div(ng-include="'app/components/navbar/navbar.html'")
   h1 Pending Checks
   
-  div.alert.no-subscribers(ng-hide="(!subscribers.length)") 
+  div.alert.no-subscriptions(ng-hide="(!subscriptionss.length)") 
     h2 You have pending stuff!
   div.row
     div.col-xs-6.col-md-6(align="left")
@@ -12,6 +12,6 @@ div.container
       button#next-page-button.btn.btn-default.pull-right(ng-click="nextPage()")
         span.glyphicon.glyphicon-menu-right
         
-  div(ng-repeat="sub in subscribers")
-    subscriber-item(subscriber="sub")
+  div(ng-repeat="sub in subscriptions")
+    subscription-item(subscription="sub")
     
