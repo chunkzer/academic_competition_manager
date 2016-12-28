@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 if Rails.env = "development"
-  User.create(role_id: 1, name: 'Administrator', last_name: 'Account', email: 'administrator@yopmail.com')
-  User.create(role_id: 2, name: 'Student', last_name: 'Account', email: 'student@yopmail.com')
+  User.create(role_id: 1, name: 'Jose Armando', last_name: 'Account', email: 'administrator@yopmail.com')
+  User.create(role_id: 2, name: 'Juan Jose', last_name: 'Account', email: 'student@yopmail.com')
 
 end
 
