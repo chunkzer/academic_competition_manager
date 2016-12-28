@@ -1,6 +1,17 @@
 div.container
   div(ng-include="'app/components/navbar/navbar.html'")
   h1 Pending Checks
+  
+  div.alert.no-subscribers(ng-hide="(!subscribers.length)") 
+    h2 You have pending stuff!
+  div.row
+    div.col-xs-6.col-md-6(align="left")
+      button#previous-page-button.btn.btn-default(ng-click="previousPage()")
+        span.glyphicon.glyphicon-menu-left
+    div.col-xs-6.col-md-6(align="right")
+      button#next-page-button.btn.btn-default.pull-right(ng-click="nextPage()")
+        span.glyphicon.glyphicon-menu-right
+        
+  div(ng-repeat="sub in subscribers")
+    subscriber-item(subscriber="sub")
     
-  ul(ng-repeat="subscriber in subscribers")
-    li {{subscriber.name}}

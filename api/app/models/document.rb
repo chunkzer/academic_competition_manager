@@ -2,6 +2,6 @@ class Document < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :event
-  has_one    :requirement
+  belongs_to :requirement, foreign_key: "requirement_id"
 
 end

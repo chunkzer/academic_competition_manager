@@ -1,7 +1,7 @@
 class EventSubscriberSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :event_id, :approved, :documents
+  attributes :id, :user, :event, :approved, :documents
 
   def documents
-    object.user.documents.where(event_id: object.event_id)
+    object.user.documents.where(event_id: object.event_id).map{|f| DocumentSerializer.new(f).attributes}
   end
 end

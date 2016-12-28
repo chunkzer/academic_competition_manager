@@ -41,4 +41,21 @@ if Rails.env = "development"
                           approved: false
                           )
 
+  EventSubscriber.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
+                          user_id: User.find_by(name: 'Juan Jose').id,
+                          approved: false
+                          )
+
+  Document.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
+                  user_id: User.find_by(name: 'Juan Jose').id,
+                  requirement_id: Requirement.find_by(description: "Copia de Acta de Nacimiento.").id,
+                  approved: false
+                 )
+
+  Document.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
+                  user_id: User.find_by(name: 'Jose Armando').id,
+                  requirement_id: Requirement.find_by(description: "Copia de Acta de Nacimiento.").id,
+                  approved: false
+                )
+
 end

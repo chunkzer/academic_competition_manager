@@ -49,6 +49,8 @@ gem 'figaro'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
+#For file uploading
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 
 group :development, :test do
   gem "rspec-rails"

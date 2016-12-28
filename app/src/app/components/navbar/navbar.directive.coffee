@@ -11,7 +11,7 @@ angular.module 'servicio'
     directive =
       restrict: 'E'
       templateUrl: 'app/components/navbar/navbar.html'
-      scope: creationDate: '='
+      scope: subscriber: '='
       controller: NavbarController
       controllerAs: 'vm'
       bindToController: true
