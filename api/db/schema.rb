@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228101651) do
+ActiveRecord::Schema.define(version: 20161228201356) do
 
   create_table "documents", force: :cascade do |t|
-    t.string   "path",           limit: 255
     t.integer  "user_id",        limit: 4
     t.integer  "event_id",       limit: 4
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "requirement_id", limit: 4
     t.boolean  "approved"
+    t.string   "path",           limit: 255
   end
 
   add_index "documents", ["requirement_id"], name: "index_documents_on_requirement_id", using: :btree

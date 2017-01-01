@@ -7,6 +7,15 @@ angular.module 'servicio'
       scope: subscription: '='
       controllerAs: 'vm'
       bindToController: true
-      controller: ($scope, $attrs, $transclude) ->
+      controller: ($scope, $uibModal, $log, $document) ->
         vm = $scope.vm
-        vm.isCollapsed = true;
+        vm.isCollapsed = true
+        inspectDocument = (doc) ->
+          $scope.$emit('showModal', doc)
+          console.log('inspect!')
+        toggleCollapse = () ->
+          vm.isCollapsed = !vm.isCollapsed
+          console.log("toggle!")
+        vm.inspectDocument = inspectDocument
+        vm.toggleCollapse = toggleCollapse
+        vm

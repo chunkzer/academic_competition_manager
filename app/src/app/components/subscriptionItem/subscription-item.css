@@ -4,10 +4,6 @@
   transition-duration: .5s;
 }
 
-.active-subscription:hover{
-  background-color: #EFF3F7;
-}
-
 .subscription-container {
   display:flex;
   align-items: center;
@@ -66,28 +62,14 @@
   color: white;
 }
 
-.action-orange:hover{
-  color: white;
-  background-color: #FF6600;
-}
-
 .action-black{
   border: none;
-}
-
-.action-black:hover{
-  background-color:  #666666;
-  color: white;
 }
 
 .active-subscription{
   padding: 0% 0%;
   cursor: pointer;
   transition-duration: .5s;
-}
-
-.active-subscription:hover{
-  background-color: #EFF3F7;
 }
 
 .subscription-container {
@@ -198,19 +180,10 @@
   padding: 2%;
 }
 
-.hidden-button{
-  color: white;
-  cursor: default;
-}
-
 .row-score-directive{
   text-align: center;
   margin-top: .5%;
   margin-bottom: .5%;
-}
-
-.hidden-button:hover{
-  color: white;
 }
 
 .hidden-button:active{
@@ -255,10 +228,6 @@
 
 .comments{
   text-align: center;
-}
-
-.second-chance-assigned:hover{
-  color: white;
 }
 
 .interview-form{
