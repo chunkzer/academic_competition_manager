@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 if Rails.env = "development"
-  User.create(role_id: 1, name: 'Jose Armando', last_name: 'Account', email: 'administrator@yopmail.com')
-  User.create(role_id: 2, name: 'Juan Jose', last_name: 'Account', email: 'student@yopmail.com')
+  User.create(role_id: 1, name: 'Jose Armando', last_name: 'Valencia Ramirez', email: 'administrator@yopmail.com')
+  User.create(role_id: 2, name: 'Juan Jose', last_name: 'Spyros Refrän', email: 'student@yopmail.com')
 
   Event.create(name: "Concurso de Fisica",
                 event_date: Time.now,
@@ -31,7 +31,7 @@ if Rails.env = "development"
                           requirement_id: Requirement.find_by(description: "Foto de frente.").id
                           )
 
-  EventSubscription.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
+  EventSubscription.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
                           user_id: User.find_by(name: 'Jose Armando').id,
                           approved: false
                           )
@@ -41,21 +41,33 @@ if Rails.env = "development"
                           approved: false
                           )
 
-  EventSubscription.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
+  EventSubscription.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
                           user_id: User.find_by(name: 'Juan Jose').id,
                           approved: false
                           )
 
-  Document.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
-                  user_id: User.find_by(name: 'Juan Jose').id,
-                  requirement_id: Requirement.find_by(description: "Copia de Acta de Nacimiento.").id,
-                  approved: false
-                 )
+  Document.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
+                    user_id: User.find_by(name: 'Juan Jose').id,
+                    requirement_id: Requirement.find_by(description: "Copia de Acta de Nacimiento.").id,
+                    approved: false
+                   )
+
+  Document.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
+                   user_id: User.find_by(name: 'Juan Jose').id,
+                   requirement_id: Requirement.find_by(description: "Foto de frente.").id,
+                   approved: false
+                  )
 
   Document.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
-                  user_id: User.find_by(name: 'Jose Armando').id,
-                  requirement_id: Requirement.find_by(description: "Copia de Acta de Nacimiento.").id,
-                  approved: false
-                )
+                   user_id: User.find_by(name: 'Juan Jose').id,
+                   requirement_id: Requirement.find_by(description: "Copia de Acta de Nacimiento.").id,
+                   approved: false
+                  )
+
+  Document.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
+                    user_id: User.find_by(name: 'Jose Armando').id,
+                    requirement_id: Requirement.find_by(description: "Copia de Acta de Nacimiento.").id,
+                    approved: false
+                  )
 
 end

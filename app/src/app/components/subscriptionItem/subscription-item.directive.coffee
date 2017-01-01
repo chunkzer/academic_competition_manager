@@ -10,12 +10,21 @@ angular.module 'servicio'
       controller: ($scope, $uibModal, $log, $document) ->
         vm = $scope.vm
         vm.isCollapsed = true
+        modalController = ($scope, $uibModalInstance, doc) ->
+          $scope.doc = doc
+          $scope.save  = () -> $uibModalInstance.close()
+          $scope.cancel = () -> $uibModalInstance.dismiss('cancel')
         inspectDocument = (doc) ->
-          $scope.$emit('showModal', doc)
-          console.log('inspect!')
+          $uibModal.open({
+                animation: true,
+                templateUrl: "app/views/modal-templates/image.html",
+                controller: modalController
+                resolve: {
+                    doc: doc
+                }
+          })
         toggleCollapse = () ->
           vm.isCollapsed = !vm.isCollapsed
-          console.log("toggle!")
         vm.inspectDocument = inspectDocument
         vm.toggleCollapse = toggleCollapse
         vm
