@@ -1,5 +1,5 @@
 angular.module 'servicio'
-  .controller 'MainController', ($scope, $http, User, localStorage, webDevTec) ->
+  .controller 'MainController', ($scope, $http, $state, User, localStorage) ->
     $scope.credentials = {}
     $scope.username = ''
     $scope.password = ''
@@ -16,8 +16,9 @@ angular.module 'servicio'
       config = {}
       $http.post(url, data, config)
       .then (response) ->
-        localStorage.store(response.data.payload)
+        localStorage.massStorage(response.data.payload)
         $scope.creatingNewUser = !$scope.creatingNewUser
+        $state.go("home")
       .catch -> alert "Usuario o contraseña incorrecta."
       return
     $scope.toggleNewUser = ->
@@ -25,7 +26,9 @@ angular.module 'servicio'
       return
     $scope.createUser = () ->
       new User($scope.newUser).create()
-      .then (response) -> alert "Usuario creado con exito!"
+      .then (response) ->
+        alert "Usuario creado con exito!"
+        $scope.creatingNewUser = !$scope.creatingNewUser
       .catch -> alert "Ese usuario ya existe."
       return
     return

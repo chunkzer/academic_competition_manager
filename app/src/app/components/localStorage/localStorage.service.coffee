@@ -10,6 +10,14 @@ angular.module 'servicio'
         return true
       false
 
+    massStorage = (obj) ->
+      if isAvailable()
+        for k,v of obj
+          localStorage.setItem(k, v)
+          console.log(k, v)
+        return true
+      false
+
     modify = (key, value) ->
       if isAvailable()
         if remove(key)
@@ -38,6 +46,7 @@ angular.module 'servicio'
         return true
       false
     vm.isAvailable = isAvailable
+    vm.massStorage = massStorage
     vm.store = store
     vm.modify = modify
     vm.remove = remove
