@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <h1>
+    Hola <%= @user.name %>!<br><br>
+  </h1>
+  <p>
+    Muchas gracias por interesarte en participar en un concurso academico!
+  </p>
+  <p>
+    Aqui en la Universidad de Sonora nos interesa muchisimo fomentar la actividad estudiantil!
+  </p>
+  <p>
+    Para entrar al sistema de concursos academicos ve aqui: <%= Figaro.env.BASE_URL %> <br>
+  </p>
+  <br><br>
+  <b>Usuario:</b> <%= @user.email %><br>
+  <b>Contraseña:</b> <%= @password%><br><br>
+
+  Te deseamos lo mejor,<br><br>
+    Departamento de Ciencias Exactas, UniSon<br>
+
+</body>
+</html>

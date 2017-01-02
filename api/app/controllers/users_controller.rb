@@ -18,12 +18,14 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-
-    if @user.save
-      render json: @user, status: :created, location: @user
+    existingUser = User.find_by(email: user_params[:email])
+    unless existingUser
+      unencrypted_password = parameters[:password]
+      user = CreateUser.call({user_params: user_params})[:user]
+      UserMailer.welcome_email(user, unencrypted_password).deliver_later
+      render json: user, status: :created
     else
-      render json: @user.errors, status: :unprocessable_entity
+    render json: existingUser, status: 403 and return
     end
   end
 
