@@ -13,7 +13,7 @@ class UserSessionsController < ApplicationController
   def createToken
     context = {hash: {
                     user_id: @user.user_id,
-                    role_id: @user.role_id
+                    role_id: @user.role_id,
                     full_name: @user.fullname,
                     email: @user.email
                   }

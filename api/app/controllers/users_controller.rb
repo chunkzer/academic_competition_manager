@@ -20,9 +20,9 @@ class UsersController < ApplicationController
   def create
     existingUser = User.find_by(email: user_params[:email])
     unless existingUser
-      unencrypted_password = parameters[:password]
+      user_params[:password]
       user = CreateUser.call({user_params: user_params})[:user]
-      UserMailer.welcome_email(user, unencrypted_password).deliver_later
+      UserMailer.welcome_email(user, user_params[:password]).deliver_later
       render json: user, status: :created
     else
     render json: existingUser, status: 403 and return

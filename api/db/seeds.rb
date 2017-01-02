@@ -9,17 +9,20 @@ if Rails.env = "development"
   User.create(role_id: 1,
               name: 'Jose Armando',
               last_name: 'Valencia Ramirez',
-              email: 'student1@yopmail.com'
+              email: 'student1@yopmail.com',
+              password: '$2y$10$VohsaZwlcuFRjfLqabvi3u6QVFkjLu7phwChZlfhNIMKEOnS4oF6K'
               )
   User.create(role_id: 1,
               name: 'Juan Jose',
               last_name: 'Spyros Refrän',
-              email: 'student2@yopmail.com'
+              email: 'student2@yopmail.com',
+              password: '$2y$10$VohsaZwlcuFRjfLqabvi3u6QVFkjLu7phwChZlfhNIMKEOnS4oF6K'
               )
   User.create(role_id: 2,
               name: 'Adrianvo',
               last_name: 'Unison',
-              email: 'adrianvo@yopmail.com'
+              email: 'adrianvo@yopmail.com',
+              password: '$2y$10$VohsaZwlcuFRjfLqabvi3u6QVFkjLu7phwChZlfhNIMKEOnS4oF6K'
               )
 
   Event.create(name: "Concurso de Fisica",

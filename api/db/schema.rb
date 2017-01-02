@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170102055614) do
+ActiveRecord::Schema.define(version: 20170102095401) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   limit: 4,     default: 0, null: false
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20170102055614) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "role_id",    limit: 4
+    t.string   "password",   limit: 255
   end
 
   add_foreign_key "documents", "requirements"

@@ -17,5 +17,4 @@
 /tmp
 
 # Ignore application.yml changes
-
 config/application.yml

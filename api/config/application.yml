@@ -2,24 +2,18 @@
 production:
   GMAIL_USERNAME: ''
   GMAIL_PASSWORD: ''
-  GOOGLE_KEY: ''
-  GOOGLE_SECRET: ''
   JWT_SECRET: ''
   BASE_URL: ''
 
 staging:
   GMAIL_USERNAME: ''
   GMAIL_PASSWORD: ''
-  GOOGLE_KEY: ''
-  GOOGLE_SECRET: ''
   JWT_SECRET: ''
   BASE_URL: ''
 
 development:
-  GMAIL_USERNAME: ''
-  GMAIL_PASSWORD: ''
-  GOOGLE_KEY: ''
-  GOOGLE_SECRET: ''
-  JWT_SECRET: ''
+  GMAIL_USERNAME: 'acm.tester.ruink@gmail.comments'
+  GMAIL_PASSWORD: 'ONEPERSONATHOUSANDFEELINGS'
+  JWT_SECRET: '43gpST42PiSXCMaDM0hbguR9jTAzhsAB'
 
   BASE_URL: 'http://localhost:9000/#/'

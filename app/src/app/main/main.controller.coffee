@@ -1,30 +1,29 @@
 angular.module 'servicio'
-  .controller 'MainController', ($timeout, webDevTec, toastr) ->
-    'ngInject'
-    vm = this
-    activate = ->
-      getWebDevTec()
-      $timeout (->
-        vm.classAnimation = 'rubberBand'
-        return
-      ), 4000
-      return
+  .controller 'MainController', ($scope, $http, User) ->
+    $scope.credentials = {}
+    $scope.username = ''
+    $scope.password = ''
+    $scope.creatingNewUser = false;
+    $scope.newUser =
+      name: ""
+      last_name: ""
+      email: ""
+      password: ""
 
-    showToastr = ->
-      toastr.info 'Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>'
-      vm.classAnimation = ''
+    $scope.login = ->
+      url = '/api/user_sessions'
+      data = {username: $scope.username, password: $scope.password}
+      config = {}
+      $http.post(url, data, config)
+      .then (response) => credentials = response
+      .catch => alert "Usuario o contraseña incorrecta."
       return
-
-    getWebDevTec = ->
-      vm.awesomeThings = webDevTec.getTec()
-      angular.forEach vm.awesomeThings, (awesomeThing) ->
-        awesomeThing.rank = Math.random()
-        return
+    $scope.toggleNewUser = ->
+      $scope.creatingNewUser = !$scope.creatingNewUser
       return
-
-    vm.awesomeThings = []
-    vm.classAnimation = ''
-    vm.creationDate = 1482108718686
-    vm.showToastr = showToastr
-    activate()
+    $scope.createUser = () ->
+      new User($scope.newUser).create()
+      .then (response) => alert "Usuario creado con exito!"
+      .catch => alert "Ese usuario ya existe."
+      return
     return

@@ -17,7 +17,7 @@
 /tmp
 
 # Ignore credentials
-/config/application.yml
+api/config/application.yml
 
 # Ignore .DS_Store
 .DS_Store
