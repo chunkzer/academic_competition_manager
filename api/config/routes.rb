@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :events, except: [:new, :edit]
     resources :documents
     resources :users, except: [:new, :edit]
+
+    resources :user_sessions, only: [:create]
  end
 
 
