@@ -13,7 +13,7 @@ staging:
 
 development:
   GMAIL_USERNAME: 'acm.tester.ruink@gmail.comments'
-  GMAIL_PASSWORD: 'ONEPERSONATHOUSANDFEELINGS'
-  JWT_SECRET: '43gpST42PiSXCMaDM0hbguR9jTAzhsAB'
+  GMAIL_PASSWORD: ''
+  JWT_SECRET: ''
 
   BASE_URL: 'http://localhost:9000/#/'
