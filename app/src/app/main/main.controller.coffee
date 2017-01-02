@@ -1,5 +1,5 @@
 angular.module 'servicio'
-  .controller 'MainController', ($scope, $http, $state, User, localStorage) ->
+  .controller 'MainController', ($scope, $http, $state, User, authentication) ->
     $scope.credentials = {}
     $scope.username = ''
     $scope.password = ''
@@ -11,15 +11,11 @@ angular.module 'servicio'
       password: ""
 
     $scope.login = ->
-      url = '/api/user_sessions'
-      data = {email: $scope.username, password: $scope.password}
-      config = {}
-      $http.post(url, data, config)
-      .then (response) ->
-        localStorage.massStorage(response.data.payload)
+      if authentication.signIn($scope.username, $scope.password)
         $scope.creatingNewUser = !$scope.creatingNewUser
         $state.go("home")
-      .catch -> alert "Usuario o contraseña incorrecta."
+      else
+        alert "Error de usuario o contraseña!"
       return
     $scope.toggleNewUser = ->
       $scope.creatingNewUser = !$scope.creatingNewUser

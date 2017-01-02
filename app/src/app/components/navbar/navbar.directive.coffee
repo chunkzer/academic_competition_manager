@@ -1,12 +1,20 @@
 angular.module 'servicio'
   .directive 'acmeNavbar', ->
 
-    NavbarController = (moment) ->
+    NavbarController = ($scope, $state, authentication) ->
       'ngInject'
       vm = this
       # "vm.creationDate" is available by directive option "bindToController: true"
-      vm.relativeDate = moment(vm.creationDate).fromNow()
-      return
+      $scope.$on('signOut', () ->
+        vm.signOut()
+
+      vm.signOut = ->
+        if authentication.signOut() ->
+          $scope.signedIn = false
+          $state.go('login')
+          return true
+        false
+
 
     directive =
       restrict: 'E'
