@@ -1,5 +1,5 @@
 angular.module 'servicio'
-  .config ($logProvider, toastrConfig) ->
+  .config ($logProvider, toastrConfig, $httpProvider) ->
     'ngInject'
     # Enable log
     $logProvider.debugEnabled true
@@ -9,3 +9,6 @@ angular.module 'servicio'
     toastrConfig.positionClass = 'toast-top-right'
     toastrConfig.preventDuplicates = true
     toastrConfig.progressBar = true
+    #Send x-csrf-token with every request
+    authToken = $("meta[name=\"csrf-token\"]").attr("content")
+    $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken

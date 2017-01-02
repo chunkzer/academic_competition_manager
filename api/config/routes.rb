@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       end
     end
     resources :events, except: [:new, :edit]
-    resources :documents, except: [:new, :edit]
+    resources :documents
     resources :users, except: [:new, :edit]
  end
 

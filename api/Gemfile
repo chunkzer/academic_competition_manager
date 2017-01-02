@@ -26,6 +26,10 @@ gem 'delayed_job_active_record'
 #Daemons for delayed_job
 gem "daemons"
 
+#Fixes CSRF maybe?
+gem 'angular_rails_csrf'
+
+
 #Active model serializer
 gem 'active_model_serializers', '~> 0.10.0'
 

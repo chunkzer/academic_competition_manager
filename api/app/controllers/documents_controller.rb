@@ -31,7 +31,6 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1.json
   def update
     @document = Document.find(params[:id])
-
     if @document.update(document_params)
       head :no_content
     else
@@ -54,6 +53,6 @@ class DocumentsController < ApplicationController
     end
 
     def document_params
-      params.require(:document).permit(:name, :user_id, :event_id)
+      params.require(:document).permit(:user_id, :event_id, :approved)
     end
 end

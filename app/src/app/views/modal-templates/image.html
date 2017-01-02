@@ -1,11 +1,15 @@
 <div class="source-list-modal">
     <div class="modal-header">
         <h3 class="modal-title">
-          Say wat?<br>
-          {{doc}}<br>
+          {{sub.user.name}} {{sub.user.lastName}} - {{doc.requirement}}
         </h3>
+        <div class="modal-body">
+           Path: {{doc.path.url}}
+            <img ng-if="doc.path.url" ng-src="{{doc.path.url}}">
+        </div>
         <div class="controls">
-            <button class="btn btn-primary" type="button" ng-click="save()">Save</button>
+            <button class="btn btn-primary pull-left" type="button" ng-click="approve()">Aceptar</button>
+            <button class="btn btn-danger pull-right" type="button" ng-click="cancel()">Rechazar</button>
         </div>
     </div>
 </div>

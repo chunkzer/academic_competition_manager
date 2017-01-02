@@ -29,6 +29,10 @@ angular.module 'servicio', ['ngAnimate',
     class Event extends RailsResource
       @configure url: "/api/events", name: "event"
 
+  .factory "Document", (RailsResource) ->
+    class Document extends RailsResource
+      @configure url: "/api/documents", name: "document"
+
   .factory "PendingSubscription", (RailsResource) ->
     class PendingSubscription extends RailsResource
       @configure url: "/api/event_subscriptions/pending_subscriptions", name: "pending_subscription"
