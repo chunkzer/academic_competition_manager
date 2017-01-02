@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-  skip_before_filter :verifier, only: [:create, :createToken]
+  # skip_before_filter :verifier, only: [:create, :createToken]
 
   def create
     @user = AuthenticateUser.call(user_params)[:user]
@@ -12,20 +12,15 @@ class UserSessionsController < ApplicationController
 
   def createToken
     context = {hash: {
-                    id_user: @user.id_user,
-                    id_candidate_role: @user.id_candidate_role,
-                    full_name: @user.get_fullname,
-                    id_role: @user.id_role,
-                    trello_app: Figaro.env.TRELLO_APP_KEY
+                    user_id: @user.user_id,
+                    role_id: @user.role_id
+                    full_name: @user.fullname,
+                    email: @user.email
                   }
                 }
 
     generated_token = CreateJsonWebToken.call(context)[:jwt]
     render json: {token: generated_token, payload: DecodeJsonWebToken.call({token: generated_token})[:payload]}
-  end
-
-  def get_credentials
-    render json: DecodeJsonWebToken.call(params)[:payload]
   end
 
   private
