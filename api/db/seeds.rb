@@ -6,18 +6,21 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 if Rails.env = "development"
+
   User.create(role_id: 1,
               name: 'Jose Armando',
               last_name: 'Valencia Ramirez',
               email: 'student1@yopmail.com',
               password: '$2y$10$VohsaZwlcuFRjfLqabvi3u6QVFkjLu7phwChZlfhNIMKEOnS4oF6K'
               )
+
   User.create(role_id: 1,
               name: 'Juan Jose',
               last_name: 'Spyros Refrän',
               email: 'student2@yopmail.com',
               password: '$2y$10$VohsaZwlcuFRjfLqabvi3u6QVFkjLu7phwChZlfhNIMKEOnS4oF6K'
               )
+
   User.create(role_id: 2,
               name: 'Adrianvo',
               last_name: 'Unison',
@@ -26,10 +29,10 @@ if Rails.env = "development"
               )
 
   Event.create(name: "Concurso de Fisica",
-                event_date: Time.now,
-                registration_deadline: Time.now,
-                description: 'Concurso de Fisica para estudiantes de preparatoria.'
-              )
+               event_date: Time.now,
+               registration_deadline: Time.now,
+               description: 'Concurso de Fisica para estudiantes de preparatoria.'
+               )
 
   Event.create(name: "Concurso de Matematicas",
                event_date: Time.now,

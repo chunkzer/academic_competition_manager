@@ -6,15 +6,15 @@ class UserSessionsController < ApplicationController
     if @user
       createToken
     else
-      render :nothing => true, :status => 401
+      render nothing: true, status: 401
     end
   end
 
   def createToken
     context = {hash: {
-                    user_id: @user.user_id,
+                    user_id: @user.id,
                     role_id: @user.role_id,
-                    full_name: @user.fullname,
+                    full_name: @user.full_name,
                     email: @user.email
                   }
                 }
@@ -26,7 +26,7 @@ class UserSessionsController < ApplicationController
   private
 
   def user_params
-    params.permit(:username, :password, :token)
+    params.require(:user_session).permit(:name, :last_name, :email, :password, :token)
   end
 
 end

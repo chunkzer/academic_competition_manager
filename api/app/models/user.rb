@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
   end
 
   def encrypt_password
-  if self.password.present?
-    self.password = BCrypt::Password.create(self.password).sub!("$2a", "$2y")
+    if self.password.present?
+      self.password = BCrypt::Password.create(self.password).sub!("$2a", "$2y")
+    end
   end
-end
 
 end
