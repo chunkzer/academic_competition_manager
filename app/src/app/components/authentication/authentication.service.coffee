@@ -10,14 +10,14 @@ angular.module 'servicio'
 
     hardSignOut = ->
       localStorage.clear()
-      localStorage.store 'signedOut', '1'
+      localStorage.remove 'signedIn'
       jwt = token: null
       credentials =
         full_name: null
         role_id: null
         user_id: null
         email: null
-      $state.go("/")
+      $state.go("/login")
       location.reload()
       return
 
@@ -48,6 +48,7 @@ angular.module 'servicio'
       validateSignedIn()
       session = ! !credentials.user_id
       if !session
+        localStorage.remove('signedIn')
         $rootScope.$emit 'signOut', {}
       session
 
@@ -74,12 +75,13 @@ angular.module 'servicio'
         credentials.email = userData.payload.email
         localStorage.massStorage(response.data.payload)
         localStorage.store("token", response.data.token)
+        localStorage.store("signedIn", 1)
         true
       .catch -> false
 
     signOut = ->
       localStorage.clear()
-      localStorage.store('signedOut', '1')
+      localStorage.remove('signedIn')
       jwt = token: null
       credentials =
         full_name: null

@@ -1,5 +1,5 @@
 angular.module 'servicio'
-  .controller 'MainController', ($scope, $http, $state, User, authentication) ->
+  .controller 'MainController', ($scope, $http, $state, User, authentication, localStorage) ->
     $scope.credentials = {}
     $scope.username = ''
     $scope.password = ''
@@ -12,7 +12,6 @@ angular.module 'servicio'
 
     $scope.login = ->
       if authentication.signIn($scope.username, $scope.password)
-        $scope.creatingNewUser = !$scope.creatingNewUser
         $state.go("home")
       else
         alert "Error de usuario o contraseña!"

@@ -3,8 +3,10 @@ angular.module 'servicio'
     'ngInject'
     $stateProvider
       .state 'login',
-        url: '/'
+        url: '/login'
         templateUrl: 'app/main/main.html'
         controller: 'MainController'
         controllerAs: 'main'
-    $urlRouterProvider.otherwise '/'
+        onEnter: ['localStorage', '$state', (localStorage, $state) ->
+          if localStorage.get("signedIn")
+            console.log("wat")]

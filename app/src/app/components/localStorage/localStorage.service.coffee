@@ -14,7 +14,6 @@ angular.module 'servicio'
       if isAvailable()
         for k,v of obj
           localStorage.setItem(k, v)
-          console.log(k, v)
         return true
       false
 
