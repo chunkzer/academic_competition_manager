@@ -8,7 +8,11 @@ Rails.application.routes.draw do
        get 'pending_subscriptions'
       end
     end
-    resources :events, except: [:new, :edit]
+    resources :events, except: [:new, :edit] do
+      collection do
+       get 'upcoming_events'
+      end
+    end
     resources :documents
     resources :users, except: [:new, :edit]
 

@@ -15,6 +15,14 @@ class EventsController < ApplicationController
     render json: @event
   end
 
+
+  # GET /events/upcoming_events
+  # GET /events/upcoming_events.json
+  def upcoming_events
+    @events = Event.where("registration_deadline > ?", Time.now).paginate(page: params[:page], per_page: 25)
+    render json: @event
+  end
+
   # POST /events
   # POST /events.json
   def create
