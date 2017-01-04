@@ -18,13 +18,9 @@ angular.module 'servicio', ['ngAnimate',
         onEnter: ['localStorage', '$state', (localStorage, $state) ->
           userRole = localStorage.get("role_id")
           if !userRole
-            # $state.transitionTo('login')
-            x = 1
-            console.log("trans to login")
+            $state.transitionTo('login')
           if userRole != "2"
-            # $state.transitionTo('events')]
-            x = 2
-            console.log("trans to events")]
+            $state.transitionTo('events')]
       .state "events",
         url: "/events",
         templateUrl: "app/views/events.html",
@@ -32,13 +28,9 @@ angular.module 'servicio', ['ngAnimate',
         onEnter: ['localStorage', '$state', (localStorage, $state) ->
           userRole = localStorage.get("role_id")
           if !userRole
-            # $state.transitionTo('login')
-            x = 2
-            console.log("trans to login")
-          if userRole != "2"
-            # $state.transitionTo('events')]
-            x = 2
-            console.log("trans to events")]
+            $state.transitionTo('login')
+          if userRole != "1"
+            $state.transitionTo('home')]
     $urlRouterProvider.otherwise '/login'
 
   .factory "User", (RailsResource) ->

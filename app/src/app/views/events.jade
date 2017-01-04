@@ -1,6 +1,5 @@
 div.container
-  div(ng-include="'app/components/navbar/navbar.html'")
+  acme-navbar
   h1 Events
-  
   ul(ng-repeat="event in events")
     li {{event.name}}

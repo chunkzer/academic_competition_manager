@@ -1,24 +1,22 @@
 angular.module 'servicio'
-  .directive 'acmeNavbar', ->
+  .directive 'acmeNavbar', () ->
 
     directive =
       restrict: 'E'
       templateUrl: 'app/components/navbar/navbar.html'
       scope: stuff: '='
-      controller: NavbarController
       controllerAs: 'vm'
       bindToController: true
+      controller: ($scope, $state, authentication) ->
+        'ngInject'
+        vm = this
+        $scope.$on 'signOut', (event, data) -> $scope.signOut()
 
-    NavbarController = ($scope, $state, authentication) ->
-      'ngInject'
-      $scope.lol = "shit son"
-      $scope.$on 'signOut', (event, data) -> $scope.signOut()
-
-      $scope.signOut = () ->
-        if authentication.signOut()
-          console.log("yay")
-          $scope.signedIn = false
-          $state.go('login')
-          return true
-        false
-      return
+        vm.signOut = () ->
+          if authentication.signOut()
+            $scope.signedIn = false
+            $state.go('login')
+            return true
+          false
+        console.log(vm.signOut)
+        vm
