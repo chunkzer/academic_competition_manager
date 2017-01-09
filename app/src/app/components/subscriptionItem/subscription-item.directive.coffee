@@ -1,5 +1,5 @@
 angular.module 'servicio'
-  .directive 'subscriptionItem', () ->
+  .directive 'subscriptionItem', (ModalService) ->
 
     directive =
       restrict: 'E'
@@ -7,30 +7,37 @@ angular.module 'servicio'
       scope: subscription: '='
       controllerAs: 'vm'
       bindToController: true
-      controller: ($scope, $uibModal, $log, $document) ->
+      controller: ($scope, $uibModal, $log, $document, ModalService) ->
         vm = $scope.vm
         vm.isCollapsed = true
-        modalController = ($scope, $uibModalInstance, doc, sub, Document) ->
-          $scope.doc = doc
-          $scope.sub = sub
-          $scope.approve  = () ->
-            doc.approved = true
-            new Document(doc).update()
-            $uibModalInstance.close()
-          $scope.cancel = () -> $uibModalInstance.dismiss('cancel')
-        inspectDocument = (doc) ->
-          $uibModal.open({
-            animation: true,
-            templateUrl: "app/views/modal-templates/image.html",
-            controller: modalController,
-            size: 'lg',
-            resolve: {
-              doc: doc,
-              sub: vm.subscription
-            }
-          })
+
         toggleCollapse = () ->
           vm.isCollapsed = !vm.isCollapsed
+
+        modalController = ($scope, doc, sub, close, Document) ->
+          $scope.doc = doc
+          $scope.sub = sub
+          $scope.dismissModal = (result) ->
+            close(result, 200)
+          $scope.approve  = (result) ->
+            doc.approved = true
+            new Document(doc).update()
+            close(result, 200)
+
+        inspectDocument = (doc) ->
+          console.log('shit')
+          ModalService.showModal(
+            templateUrl: "app/views/modal-templates/image.html"
+            inputs:
+              doc: doc
+              sub: vm.eventItem
+            controller: modalController
+            )
+          .then((modal) ->
+            modal.element.modal()
+            modal.close.then((result) ->
+              if result then console.log("You said Yes") else console.log("You said No")))
+
         vm.inspectDocument = inspectDocument
         vm.toggleCollapse = toggleCollapse
         vm

@@ -1,5 +1,16 @@
 div.container
-  acme-navbar
-  h1 Events
-  ul(ng-repeat="event in events")
-    li {{event.name}}
+  acme-navbar()
+  h1 Eventos Cercanos
+  
+  div.alert.no-subscriptions(ng-hide="(!events.length)") 
+    h2 No hay eventos cercanos
+  div.row
+    div.col-xs-6.col-md-6(align="left")
+      button#previous-page-button.btn.btn-default(ng-click="previousPage()")
+        span.glyphicon.glyphicon-menu-left
+    div.col-xs-6.col-md-6(align="right")
+      button#next-page-button.btn.btn-default.pull-right(ng-click="nextPage()")
+        span.glyphicon.glyphicon-menu-right
+  
+  div(ng-repeat="item in event-items")
+    event-item(event="item")

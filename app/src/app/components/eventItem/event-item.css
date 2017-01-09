@@ -1,0 +1,278 @@
+.active-subscription{
+  padding: 0% 0%;
+  cursor: pointer;
+  transition-duration: .5s;
+}
+
+.subscription-container {
+  display:flex;
+  align-items: center;
+}
+
+.orange-button{
+  background-color: #e54800;
+  color: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+}
+
+.orange-button-bootstrap {
+  background-color: #e54800;
+  color: white;
+}
+
+.btn-step{
+  padding: 3.5%;
+  margin: 1%;
+  font-size: small;
+  font-weight: 500;
+}
+
+.action-blue{
+  background-color: blue;
+  color: white;
+}
+
+.action-blue:hover{
+  background-color: blue;
+  color: white;
+}
+
+.action-orange{
+  border-color: #FF6600;
+  color: #FF6600;
+}
+
+
+.action-title{
+  border-color: #FF6600;
+  color: #FF6600;
+}
+
+.action-orange-white{
+  background-color: white;
+}
+
+.action-gray{
+  background-color: #CCCCCC;
+  color: black;
+}
+
+.action-gray:hover{
+  background-color: #CCCCCC;
+  color: white;
+}
+
+.action-black{
+  border: none;
+}
+
+.active-subscription{
+  padding: 0% 0%;
+  cursor: pointer;
+  transition-duration: .5s;
+}
+
+.subscription-container {
+  display:flex;
+  align-items: center;
+}
+
+.subscription-container__odd > div {
+  background-color: #fcfcfc;
+}
+
+.subscription-container__even > div {
+  background-color: #ffffff;
+}
+
+.text-color__blue {
+  color: #5797ff;
+}
+
+.text-color__link {
+  color: #2042f7;
+  font-family: sans-serif;
+}
+
+.gray-text{
+  color: gray;
+}
+
+.bold-text{
+  font-weight: bold;
+}
+
+.large-text{
+  font-size: large;
+}
+
+.no-subscriptions{
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
+
+.no-access{
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
+
+.skill-label{
+  background-color: #C9EDD2;
+  border-radius: 2px;
+  color: black;
+  margin-right: 1%;
+}
+
+.bold-gray-label {
+  margin-right: 1%;
+  font-weight: 600;
+  color: #6f6f6f;
+}
+
+.limited-width {
+  max-width: 530px;
+}
+
+.score-label{
+  background-color: #CCCCCC;
+  border-radius: 0px;
+  color: black;
+  margin-right: 1%;
+}
+
+.space-between-rows{
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.no-padding{
+  padding: 0px;
+}
+
+.logic-test-panel{
+  box-shadow: 0px 0px 15px #999999;
+  margin-top: 2%;
+  min-height: 270px;
+  max-height: 270px;
+  cursor: pointer;
+}
+
+
+.details-panel{
+  box-shadow: 0px 0px 15px #999999;
+  margin-top: 1%;
+  height: auto;
+  overflow: hidden;
+  padding: 2%;
+}
+
+.comment-panel{
+  box-shadow: 0px 0px 15px #999999;
+  margin-top: 1%;
+  height: auto;
+  overflow: hidden;
+  padding: 2%;
+}
+
+.row-score-directive{
+  text-align: center;
+  margin-top: .5%;
+  margin-bottom: .5%;
+}
+
+.hidden-button:active{
+  box-shadow: none;
+}
+
+#scroll-container{
+  overflow: hidden;
+  min-height: 220px;
+  max-height: 220px;
+}
+
+#child-scroll{
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+#scroll{
+  width: 3000px;
+  height: 220px;
+}
+
+.score-card{
+  margin-left: 1px;
+  margin-right: 1px;
+  float: left;
+  width: 350px;
+  max-width: 350px;
+}
+
+.add-subscription{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.user-profile{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.comments{
+  text-align: center;
+}
+
+.interview-form{
+  background-color: #f1f1f1;
+  padding: 0.01em 16px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+  margin-top: 20px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.interview-scoring{
+  display: block;
+}
+
+#loading-bar {
+  pointer-events: all;
+  z-index: 99999;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  cursor: wait;
+  position: fixed;
+  background-color: white;
+}
+
+#loading-bar .bar {
+  background: #ffa31a;
+}
+
+#loading-bar-spinner-logo {
+  position: absolute;
+  z-index: 500000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 115px;
+}
+
+#loading-bar-spinner-logo img {
+  height: 37px;
+  width: 115px;
+}

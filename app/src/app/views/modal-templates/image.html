@@ -1,15 +1,19 @@
-<div class="source-list-modal">
-    <div class="modal-header">
-        <h3 class="modal-title">
-          {{sub.user.name}} {{sub.user.lastName}} - {{doc.requirement}}
-        </h3>
-        <div class="modal-body">
-           Path: {{doc.path.url}}
-            <img ng-if="doc.path.url" ng-src="{{doc.path.url}}">
-        </div>
-        <div class="controls">
-            <button class="btn btn-primary pull-left" type="button" ng-click="approve()">Aceptar</button>
-            <button class="btn btn-danger pull-right" type="button" ng-click="cancel()">Rechazar</button>
+<div class="modal fade">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">
+              {{sub.user.name}} {{sub.user.lastName}} - {{doc.requirement}}
+            </h3>
+            <div class="modal-body">
+               <p> Path: {{doc.path.url}} </p>
+                <img ng-if="doc.path.url" ng-src="{{doc.path.url}}">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary pull-left" type="button" ng-click="approve()">Aceptar</button>
+                <button class="btn btn-danger pull-right" type="button" ng-click="dismissModal()">Rechazar</button>
+            </div>
+          </div>
         </div>
     </div>
 </div>

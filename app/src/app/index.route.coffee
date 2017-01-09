@@ -9,4 +9,4 @@ angular.module 'servicio'
         controllerAs: 'main'
         onEnter: ['localStorage', '$state', (localStorage, $state) ->
           if localStorage.get("signedIn")
-            console.log("wat")]
+            $state.transitionTo('home')]

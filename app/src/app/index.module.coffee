@@ -1,4 +1,6 @@
-angular.module 'servicio', ['ngAnimate',
+angular.module 'servicio', ['angularModalService',
+                            'ui.bootstrap',
+                            'ngAnimate',
                             'ngCookies',
                             'ngTouch',
                             'ngSanitize',
@@ -6,7 +8,6 @@ angular.module 'servicio', ['ngAnimate',
                             'ngAria',
                             'ngResource',
                             'ui.router',
-                            'ui.bootstrap',
                             'toastr',
                             'rails']
   .config ($stateProvider, $urlRouterProvider) ->
@@ -48,3 +49,7 @@ angular.module 'servicio', ['ngAnimate',
   .factory "PendingSubscription", (RailsResource) ->
     class PendingSubscription extends RailsResource
       @configure url: "/api/event_subscriptions/pending_subscriptions", name: "pending_subscription"
+
+  .factory "UpcomingEvents", (RailsResource) ->
+    class UpcomingEvent extends RailsResource
+      @configure url: "/api/events/upcoming_events", name: "upcoming_event"

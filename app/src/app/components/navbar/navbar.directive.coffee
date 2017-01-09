@@ -18,5 +18,4 @@ angular.module 'servicio'
             $state.go('login')
             return true
           false
-        console.log(vm.signOut)
         vm

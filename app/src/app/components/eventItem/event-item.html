@@ -24,9 +24,6 @@
     </div>
 </div>
 <div ng-hide="vm.isCollapsed" class="col-xs-12 subscription-container" uib-collapse="vm.isCollapsed">
-  <div id="modalCity">
-
-  </div>
   <div ng-repeat="doc in vm.subscription.documents">
     <hr>
       <div class="well well-lg col-xs-6 panel-body"><b>Requerimientos:</b> <br> {{doc.requirement}}</div>
@@ -35,20 +32,23 @@
            href=""
            ng-click="vm.inspectDocument(doc)"
            class="subscription-main-button btn btn-lg btn-default btn-step action-gray"
-           >
+           data-toggle="modal"
+           data-target="#myModal">
            Aun no han subido este documento.
          </a>
         <a ng-if="doc.path.url && !doc.approved"
            ng-click="vm.inspectDocument(doc)"
            href="" class="subscription-main-button btn btn-lg btn-default btn-step action-orange"
-           >
+           data-toggle="modal"
+           data-target="#myModal">
            Inspeccionar documento.
          </a>
         <a ng-if="doc.approved"
            ng-click="vm.inspectDocument(doc)"
            href=""
            class="subscription-main-button btn btn-lg btn-default btn-step action-blue"
-          >
+           data-toggle="modal"
+           data-target="#myModal">
            Documento aprobado!.
          </a>
       </div>
