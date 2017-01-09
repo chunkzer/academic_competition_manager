@@ -24,13 +24,18 @@
     </div>
 </div>
 <div ng-hide="vm.isCollapsed" class="col-xs-12 subscription-container" uib-collapse="vm.isCollapsed">
-  <div id="modalCity">
-
-  </div>
   <div ng-repeat="doc in vm.subscription.documents">
     <hr>
-      <div class="well well-lg col-xs-6 panel-body"><b>Requerimientos:</b> <br> {{doc.requirement}}</div>
-      <div class="col-xs-4" center="align">
+    <div class="well well-lg col-xs-12 panel-body">
+      <div class="col-xs-6">
+        <h3 class="subscription-name bold-text large-text text-color__blue">
+          Requerimientos:
+        </h3>
+        <div class="subscription-secondary-info" center="align">
+          <p>{{doc.requirement}}</p>
+        </div>
+      </div>
+      <div class="col-xs-6 panel-body">
         <a ng-if="!doc.path.url"
            href=""
            ng-click="vm.inspectDocument(doc)"
@@ -52,6 +57,7 @@
            Documento aprobado!.
          </a>
       </div>
+    </div>
   </div>
 </div>
 
