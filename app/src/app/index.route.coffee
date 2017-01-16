@@ -10,6 +10,7 @@ angular.module 'servicio'
         onEnter: ['localStorage', '$state', (localStorage, $state) ->
           if localStorage.get("signedIn")
             $state.transitionTo('home')]
+
       .state "home",
         url: "/home",
         templateUrl: "app/views/home.html",
@@ -20,14 +21,21 @@ angular.module 'servicio'
             $state.transitionTo('login')
           if userRole != "2"
             $state.transitionTo('events')]
+
       .state "events",
         url: "/events",
         templateUrl: "app/views/events.html",
         controller: "EventsCtrl"
         onEnter: ['localStorage', '$state', (localStorage, $state) ->
-          userRole = localStorage.get("role_id")
-          if !userRole
-            $state.transitionTo('login')
-          if userRole != "1"
-            $state.transitionTo('home')]
+          if !localStorage.get("signedIn")
+            $state.transitionTo('login')]
+
+      .state "config",
+        url: "/config",
+        templateUrl: "app/views/config.html",
+        controller: "ConfigCtrl"
+        onEnter: ['localStorage', '$state', (localStorage, $state) ->
+          if !localStorage.get("signedIn")
+            $state.transitionTo('login')]
+
     $urlRouterProvider.otherwise '/login'

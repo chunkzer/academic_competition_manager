@@ -26,7 +26,6 @@ angular.module 'servicio'
             close(result, 200)
 
         inspectDocument = (doc) ->
-          console.log('shit')
           ModalService.showModal(
             templateUrl: "app/views/modal-templates/image.html"
             inputs:

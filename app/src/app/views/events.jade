@@ -2,6 +2,9 @@ div.container
   acme-navbar()
   h1 Eventos Cercanos
   
+  button.btn.btn-default.orange-button.pull-right(ng-if="role == 2" ng-click="newEvent()")
+    p Nuevo Evento
+  
   div.alert.no-subscriptions(ng-hide="(!events.length)") 
     h2 No hay eventos cercanos
   div.row

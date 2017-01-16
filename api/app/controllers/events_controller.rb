@@ -27,8 +27,12 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
     if @event.save
+      binding.pry
+      requirement_params[:requirements].each do |req|
+        req = Requirement.find(req["id"].to_i)
+        EventRequirement.create({event_id: @event.id, requirement_id: req.id})
+      end
       render json: @event, status: :created, location: @event
     else
       render json: @event.errors, status: :unprocessable_entity
@@ -63,5 +67,9 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:event).permit(:name, :event_date, :registration_deadline, :description)
+    end
+
+    def requirement_params
+      params.require(:event).permit(requirements: [:id, :description])
     end
 end

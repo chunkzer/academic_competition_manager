@@ -9,4 +9,5 @@ angular.module 'servicio', ['angularModalService',
                             'ngResource',
                             'ui.router',
                             'toastr',
-                            'rails']
+                            'rails',
+                            'ngLodash']
