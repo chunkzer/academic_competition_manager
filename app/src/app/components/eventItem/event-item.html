@@ -1,58 +1,30 @@
 <div class="col-xs-12 subscription-container active-subscription" ng-click="vm.toggleCollapse()">
   <!-- candidate's name -->
-    <div class="col-xs-6 panel-body">
-      <span class="subscription-name bold-text large-text text-color__blue">{{vm.subscription.user.name}} {{vm.subscription.user.lastName}}</span>
+    <div class="col-xs-9 panel-body">
+      <span class="subscription-name bold-text large-text text-color__blue">{{vm.event.name}}</span>
       <br>
       <span class="bold-text">
-        {{vm.subscription.event.name}} <br> |  <span class="subscription-secondary-info gray-text">{{vm.subscription.event.description}}</span>
+        {{vm.event.description}}
       </span>
     </div>
     <!-- candidate's contact info -->
-    <div class="col-xs-6 panel-body">
-      <span class="role-text bold-text">Correo electronico: </span>
+    <div class="col-xs-4 panel-body">
+      <span class="role-text bold-text">Fecha: </span>
       <br>
-      <span class="subscription-skills gray-text">{{vm.subscription.user.email}}</span>
+      <span class="subscription-skills gray-text">{{vm.event.eventDate}}</span>
+    </div>
+
+    <div class="col-xs-4 panel-body">
+      <span class="role-text bold-text">Limite de inscripción: </span>
+      <br>
+      <span class="subscription-skills gray-text">{{vm.event.registrationDeadline}}</span>
     </div>
 
     <!-- candidate's step -->
-    <div ng-if="!vm.subscription.approved"  class="col-xs-4">
-      <a href="" class="subscription-main-button btn btn-lg btn-default btn-step action-orange">Hay documentacion que aprobar.</a>
-    </div>
-
-    <div ng-if="vm.subscription.approved" class="col-xs-4">
-      <a href="" class="subscription-main-button btn btn-lg btn-default btn-step action-gray">La documentacion ya esta en orden.</a>
+    <div class="col-xs-4">
+      <a href="" class="subscription-main-button btn btn-lg btn-default btn-step action-orange" ng-click="newSubscription()">
+        Registate.
+      </a>
     </div>
 </div>
-<div ng-hide="vm.isCollapsed" class="col-xs-12 subscription-container" uib-collapse="vm.isCollapsed">
-  <div ng-repeat="doc in vm.subscription.documents">
-    <hr>
-      <div class="well well-lg col-xs-6 panel-body"><b>Requerimientos:</b> <br> {{doc.requirement}}</div>
-      <div class="col-xs-4" center="align">
-        <a ng-if="!doc.path.url"
-           href=""
-           ng-click="vm.inspectDocument(doc)"
-           class="subscription-main-button btn btn-lg btn-default btn-step action-gray"
-           data-toggle="modal"
-           data-target="#myModal">
-           Aun no han subido este documento.
-         </a>
-        <a ng-if="doc.path.url && !doc.approved"
-           ng-click="vm.inspectDocument(doc)"
-           href="" class="subscription-main-button btn btn-lg btn-default btn-step action-orange"
-           data-toggle="modal"
-           data-target="#myModal">
-           Inspeccionar documento.
-         </a>
-        <a ng-if="doc.approved"
-           ng-click="vm.inspectDocument(doc)"
-           href=""
-           class="subscription-main-button btn btn-lg btn-default btn-step action-blue"
-           data-toggle="modal"
-           data-target="#myModal">
-           Documento aprobado!.
-         </a>
-      </div>
-  </div>
-</div>
-
 <!-- Button trigger modal -->

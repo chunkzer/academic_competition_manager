@@ -22,3 +22,7 @@ angular.module 'servicio'
   .factory "Requirement", (RailsResource) ->
     class Requirement extends RailsResource
       @configure url: "/api/requirements/", name: "requirement"
+
+  .factory "EventSubscription", (RailsResource) ->
+    class EventSubscription extends RailsResource
+      @configure url: "/api/event_subscriptions/", name: "event_subscription"

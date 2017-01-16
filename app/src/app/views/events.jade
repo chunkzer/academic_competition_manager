@@ -5,8 +5,10 @@ div.container
   button.btn.btn-default.orange-button.pull-right(ng-if="role == 2" ng-click="newEvent()")
     p Nuevo Evento
   
-  div.alert.no-subscriptions(ng-hide="(!events.length)") 
+  div.alert.no-subscriptions(ng-hide="events.length > 0") 
     h2 No hay eventos cercanos
+  div.alert.no-subscriptions(ng-show="events.length > 0") 
+    h2 Proximos eventos
   div.row
     div.col-xs-6.col-md-6(align="left")
       button#previous-page-button.btn.btn-default(ng-click="previousPage()")
@@ -15,5 +17,5 @@ div.container
       button#next-page-button.btn.btn-default.pull-right(ng-click="nextPage()")
         span.glyphicon.glyphicon-menu-right
   
-  div(ng-repeat="item in event-items")
+  div(ng-repeat="item in events")
     event-item(event="item")

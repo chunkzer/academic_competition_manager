@@ -51,8 +51,6 @@ angular.module "servicio"
       ModalService.showModal(
         templateUrl: "app/views/modal-templates/new-event.html"
         controller: modalController
-        input:
-          Requirement: Requirement
         )
       .then((modal) ->
         modal.element.modal()

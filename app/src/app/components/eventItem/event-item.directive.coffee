@@ -4,28 +4,25 @@ angular.module 'servicio'
     directive =
       restrict: 'E'
       templateUrl: 'app/components/eventItem/event-item.html'
-      scope: eventItem: '='
+      scope: event: '='
       controllerAs: 'vm'
       bindToController: true
-      controller: ($scope, $uibModal, $log, $document) ->
+      controller: ($scope, $uibModal, $log, $document, EventSubscription, ModalService) ->
         vm = $scope.vm
-        vm.isCollapsed = true
 
-        toggleCollapse = () ->
-          vm.isCollapsed = !vm.isCollapsed
+        modalController = ($scope, close, lodash, item, EventSubscription, ModalService) ->
+          $scope.item = item
 
-        inspectDocument = (doc) ->
-          $uibModal.open({
-            animation: true,
-            templateUrl: "app/views/modal-templates/image.html",
-            controller: () -> true,
-            size: 'lg',
-            resolve: {
-              doc: doc,
-              sub: vm.eventItem
-            }
-          })
-
-        vm.inspectDocument = inspectDocument
-        vm.toggleCollapse = toggleCollapse
+        $scope.newSubscription = () ->
+          ModalService.showModal(
+            templateUrl: "app/views/modal-templates/new-subscription.html"
+            controller: modalController
+            inputs:
+              item: vm.event
+            )
+          .then((modal) ->
+            modal.element.modal()
+            modal.close.then((result) ->
+              backdrop = document.getElementsByClassName("modal-backdrop fade in")
+              backdrop[0].parentNode.removeChild(backdrop[0])))
         vm
