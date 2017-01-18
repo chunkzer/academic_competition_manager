@@ -9,15 +9,17 @@
          </div>
          <div class="col-md-12">
            <b>Requerimientos: </b>
-            <div class="col-md-12 form-group" ng-repeat="requirement in item.requirements">
-              Requerimiento
+            <div class="col-md-12" ng-repeat="requirement in item.requirements track by $index">
+              <div class="col-md-12">
+                {{requirement.description}}
+              </div>
+              <input type="file" ng-model="requirement.doc" base-sixty-four-input>
             </div>
          </div>
         </div>
       </div>
       <div class="modal-footer">
-      <div class="form-group">
-        <button class="btn btn-success pull-left" ng-click="createEvent()">Inscribir</button>
+        <button class="btn btn-success pull-left" ng-click="subscribe()">Inscribir</button>
         <button class="btn btn-danger pull-right" type="button" ng-click="dismissModal()">Cancelar</button>
       </div>
     </div>

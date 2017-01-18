@@ -55,6 +55,8 @@ gem 'figaro'
 
 #For file uploading
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+gem 'carrierwave-base64'
+
 
 group :development, :test do
   gem "rspec-rails"

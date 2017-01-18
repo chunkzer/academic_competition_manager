@@ -28,7 +28,6 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      binding.pry
       requirement_params[:requirements].each do |req|
         req = Requirement.find(req["id"].to_i)
         EventRequirement.create({event_id: @event.id, requirement_id: req.id})

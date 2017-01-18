@@ -22,4 +22,4 @@ api/config/application.yml
 # Ignore .DS_Store
 .DS_Store
 
-public/*
+api/public/*

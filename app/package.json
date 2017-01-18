@@ -8,6 +8,7 @@
     "test": "gulp test"
   },
   "devDependencies": {
+    "angular-base64-upload": "^0.1.19",
     "angular-modal-service": "^0.10.1",
     "browser-sync": "~2.9.11",
     "browser-sync-spa": "~1.0.3",
@@ -53,7 +54,8 @@
     "ng-lodash": "^0.2.3",
     "phantomjs": "~1.9.18",
     "uglify-save-license": "~0.4.1",
-    "wiredep": "~2.2.2"
+    "wiredep": "~2.2.2",
+    "bootstrap": "~3.3.5"
   },
   "engines": {
     "node": ">=0.10.0"

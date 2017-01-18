@@ -4,8 +4,6 @@ class Document < ActiveRecord::Base
   belongs_to :event
   belongs_to :requirement, foreign_key: "requirement_id"
 
-  mount_uploader :path, PathUploader
-  
-
+  mount_base64_uploader :path, PathUploader
 
 end

@@ -10,4 +10,5 @@ angular.module 'servicio', ['angularModalService',
                             'ui.router',
                             'toastr',
                             'rails',
-                            'ngLodash']
+                            'ngLodash',
+                            'naif.base64']
