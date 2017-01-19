@@ -1,6 +1,6 @@
 require 'bcrypt'
 class User < ActiveRecord::Base
-
+  enum role_id: [:student, :admin, :super_admin]
   has_many   :event_subscriptions
   has_many   :documents
 

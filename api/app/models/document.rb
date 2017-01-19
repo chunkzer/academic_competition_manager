@@ -6,4 +6,8 @@ class Document < ActiveRecord::Base
 
   mount_base64_uploader :path, PathUploader
 
+  def self.event_subscription
+    EventSubscription.where(event_id: self.event_id).where(user_id: self.user_id)[0]
+  end
+
 end

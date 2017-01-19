@@ -4,7 +4,11 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    if @current_user.super_admin?
+      @events = Event.all
+    else
+      @events = Event.upcoming
+    end
 
     render json: @events
   end
@@ -12,14 +16,6 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    render json: @event
-  end
-
-
-  # GET /events/upcoming_events
-  # GET /events/upcoming_events.json
-  def upcoming_events
-    @events = Event.where("registration_deadline > ?", Time.now).paginate(page: params[:page], per_page: 25)
     render json: @event
   end
 

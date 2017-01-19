@@ -1,14 +1,11 @@
 div.container
   acme-navbar()
-  h1 Eventos Cercanos
-  
   button.btn.btn-default.orange-button.pull-right(ng-if="role == 2" ng-click="newEvent()")
     p Nuevo Evento
-  
   div.alert.no-subscriptions(ng-hide="events.length > 0") 
     h2 No hay eventos cercanos
   div.alert.no-subscriptions(ng-show="events.length > 0") 
-    h2 Proximos eventos
+    h2 Eventos
   div.row
     div.col-xs-6.col-md-6(align="left")
       button#previous-page-button.btn.btn-default(ng-click="previousPage()")

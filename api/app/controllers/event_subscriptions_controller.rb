@@ -4,8 +4,13 @@ class EventSubscriptionsController < ApplicationController
   # GET /event_subscriptions
   # GET /event_subscriptions.json
   def index
-    @event_subscriptions = EventSubscription.all
-
+    if @current_user.super_admin?
+      @event_subscriptions = EventSubcription.all
+    elsif @current_user.admin
+      @event_subscriptions = EventSubscription.where(approved: false).event_is_upcoming
+    else
+      @event_subscriptions = @current_user.event_subscriptions("approved DESC").event_is_upcoming
+    end
     render json: @event_subscriptions
   end
 
@@ -15,16 +20,9 @@ class EventSubscriptionsController < ApplicationController
     render json: @event_subscription
   end
 
-  # GET /pending_subscribers
-  # GET /pending_subscribers.json
-  def pending_subscriptions
-    @event_subscriptions = EventSubscription.where(approved: false).paginate(page: params[:page], per_page: 25)
-    render json: @event_subscriptions
-  end
   # POST /event_subscriptions
   # POST /event_subscriptions.json
   def create
-
     @event_subscription = EventSubscription.new(event_subscription_params)
 
     if @event_subscription.save

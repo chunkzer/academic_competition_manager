@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-  # skip_before_filter :verifier, only: [:create, :createToken]
+  skip_before_filter :verifier, only: [:create, :createToken]
 
   def create
     @user = AuthenticateUser.call(user_params)[:user]

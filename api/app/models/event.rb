@@ -7,4 +7,7 @@ class Event < ActiveRecord::Base
   has_many :requirements, through: :event_requirements
   has_many :users, through: :event_subscriptions
 
+  scope :upcoming, -> {where("registration_deadline > ?", Time.now)}
+  scope :passed, -> {where("event_date < ?", Time.now)}
+
 end

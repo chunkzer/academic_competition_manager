@@ -44,6 +44,14 @@ angular.module 'servicio'
       if isAvailable()
         return true
       false
+
+    payload = ->
+      payload = {}
+      payload.role_id = localStorage.getItem('role_id')
+      payload.user_id = localStorage.getItem('user_id')
+      payload.token = localStorage.getItem('token')
+      payload
+
     vm.isAvailable = isAvailable
     vm.massStorage = massStorage
     vm.store = store
@@ -52,4 +60,5 @@ angular.module 'servicio'
     vm.get = get
     vm.clear = clear
     vm.clearFilters = clearFilters
+    vm.payload = payload
     vm
