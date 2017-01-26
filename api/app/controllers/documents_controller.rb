@@ -1,4 +1,5 @@
 class DocumentsController < ApplicationController
+  skip_before_filter :verifier, only: [:view]
   before_action :set_document, only: [:show, :update, :destroy]
 
   # GET /documents
@@ -13,6 +14,10 @@ class DocumentsController < ApplicationController
   # GET /documents/1.json
   def show
     render json: @document
+  end
+
+  def view
+    send_file "public#{Document.find(params[:id]).path.url}", type: 'image/jpeg', disposition: 'inline'
   end
 
   # POST /documents
