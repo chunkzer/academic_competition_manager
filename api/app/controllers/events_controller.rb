@@ -5,9 +5,9 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     if @current_user.super_admin?
-      @events = Event.all
+      @events = Event.all.order(:registration_deadline)
     else
-      @events = Event.upcoming
+      @events = Event.upcoming.order(:registration_deadline)
     end
 
     render json: @events

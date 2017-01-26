@@ -26,7 +26,7 @@
           <div uib-datepicker ng-model="newEvent.deadline" class="well well-sm form-group col-md-6" datepicker-options="options"></div>
           <b>Requerimientos: </b>
            <div class="col-md-12 form-group" ng-repeat="requirement in requirements">
-             <input type="checkbox" ng-model="requirement.checked" value="$index">{{requirement.description}}
+             <input type="checkbox" ng-model="requirement.checked" value="$index">  {{requirement.description}}
            </div>
           </div>
           <div class="modal-footer">
