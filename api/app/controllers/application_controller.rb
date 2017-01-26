@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     params[:payload] = JSON.parse(params[:payload]).symbolize_keys
     decodedPayload = DecodeJsonWebToken.call(params[:payload])[:payload].symbolize_keys
     if decodedPayload
-      unless params[:payload][:role_id].to_i == decodedPayload[:role_id] && params[:payload][:user_id].to_i == decodedPayload[:user_id]
+      unless params[:payload][:role_id] == decodedPayload[:role_id] && params[:payload][:user_id].to_i == decodedPayload[:user_id]
         Rails.logger.info "CREDENTIALS DON'T MATCH PAYLOAD!"
         render :nothing => true, :status => 404 and return
       end

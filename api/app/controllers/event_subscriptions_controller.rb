@@ -5,8 +5,8 @@ class EventSubscriptionsController < ApplicationController
   # GET /event_subscriptions.json
   def index
     if @current_user.super_admin?
-      @event_subscriptions = EventSubcription.all
-    elsif @current_user.admin
+      @event_subscriptions = EventSubscription.all
+    elsif @current_user.admin?
       @event_subscriptions = EventSubscription.where(approved: false).event_is_upcoming
     else
       @event_subscriptions = @current_user.event_subscriptions("approved DESC").event_is_upcoming

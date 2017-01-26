@@ -14,7 +14,7 @@ angular.module 'servicio'
         toggleCollapse = () ->
           vm.isCollapsed = !vm.isCollapsed
 
-        modalController = ($scope, doc, sub, Document, close) ->
+        modalController = ($scope, doc, sub, payload, Document, close) ->
           $scope.doc = doc
           $scope.sub = sub
           $scope.dismissModal = (result) ->
@@ -22,7 +22,7 @@ angular.module 'servicio'
 
           $scope.approve  = (result) ->
             doc.approved = true
-            new Document(doc).update()
+            new Document({doc, payload}).update()
             close(result, 200)
 
         inspectDocument = (doc) ->
