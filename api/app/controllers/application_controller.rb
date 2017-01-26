@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
 
   def verifier
     Rails.logger.info "Token Validator Called"
+    binding.pry
     params[:payload] = JSON.parse(params[:payload]).symbolize_keys
     decodedPayload = DecodeJsonWebToken.call(params[:payload])[:payload].symbolize_keys
     if decodedPayload

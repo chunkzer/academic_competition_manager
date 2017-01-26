@@ -46,11 +46,11 @@ angular.module 'servicio'
       false
 
     payload = ->
-      payload = {}
-      payload.role_id = localStorage.getItem('role_id')
-      payload.user_id = localStorage.getItem('user_id')
-      payload.token = localStorage.getItem('token')
-      payload
+      data = {payload: {}}
+      data.payload.role_id = localStorage.getItem('role_id')
+      data.payload.user_id = localStorage.getItem('user_id')
+      data.payload.token = localStorage.getItem('token')
+      data
 
     vm.isAvailable = isAvailable
     vm.massStorage = massStorage

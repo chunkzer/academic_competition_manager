@@ -1,6 +1,6 @@
 div.container
   acme-navbar()
-  button.btn.btn-default.orange-button.pull-right(ng-if="role == 2" ng-click="newEvent()")
+  button.btn.btn-default.orange-button.pull-right(ng-if="role == 'super_admin'" ng-click="newEvent()")
     p Nuevo Evento
   div.alert.no-subscriptions(ng-hide="events.length > 0") 
     h2 No hay eventos cercanos

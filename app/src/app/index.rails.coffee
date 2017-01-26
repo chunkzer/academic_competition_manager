@@ -5,16 +5,16 @@ angular.module 'servicio'
 
   .factory "Event", (RailsResource, localStorage) ->
     class Event extends RailsResource
-      @configure url: "/api/events", name: "event",
+      @configure url: "/api/events", name: "event", defaultParams: localStorage.payload()
 
   .factory "Document", (RailsResource, localStorage) ->
     class Document extends RailsResource
-      @configure url: "/api/documents", name: "document"
+      @configure url: "/api/documents", name: "document", defaultParams: localStorage.payload()
 
   .factory "Requirement", (RailsResource, localStorage) ->
     class Requirement extends RailsResource
-      @configure url: "/api/requirements/", name: "requirement"
+      @configure url: "/api/requirements/", name: "requirement", defaultParams: localStorage.payload()
 
   .factory "EventSubscription", (RailsResource, localStorage) ->
     class EventSubscription extends RailsResource
-      @configure url: "/api/event_subscriptions/", name: "event_subscription"
+      @configure url: "/api/event_subscriptions/", name: "event_subscription", defaultParams: localStorage.payload()

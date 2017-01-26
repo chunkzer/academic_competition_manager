@@ -1,14 +1,13 @@
 angular.module "servicio"
   .controller "EventsCtrl", ($scope, Event, localStorage, ModalService, Requirement, lodash) ->
     $scope.role = localStorage.get("role_id")
-    payload = localStorage.payload()
-    Event.query({page: 1, payload}).then (events) -> $scope.events = events
+    Event.query({page: 1}).then (events) -> $scope.events = events
     $scope.nextPage = () ->
       page += 1
-      Event.query({page: page, payload}).then (events) -> $scope.events = events
+      Event.query({page: page}).then (events) -> $scope.events = events
     $scope.previousPage = () ->
       page -= 1 if page != 1
-      Event.query({page: page, payload}).then (events) -> $scope.events = events
+      Event.query({page: page}).then (events) -> $scope.events = events
 
     modalController = ($scope, close, lodash, Requirement, Event ) ->
       $scope.requirements = []
