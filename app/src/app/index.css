@@ -12,3 +12,10 @@
 .thumbnail img.pull-right {
   width: 50px;
 }
+
+.container {
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: auto;
+  margin-right: auto;
+}

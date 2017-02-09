@@ -7,9 +7,9 @@ class EventSubscriptionsController < ApplicationController
     if @current_user.super_admin?
       @event_subscriptions = EventSubscription.all
     elsif @current_user.admin?
-      @event_subscriptions = EventSubscription.where(approved: false).event_is_upcoming
+      @event_subscriptions = EventSubscription.event_is_upcoming.where(approved: false)
     else
-      @event_subscriptions = @current_user.event_subscriptions("approved DESC").event_is_upcoming
+      @event_subscriptions = @current_user.event_subscriptions.event_is_upcoming.("approved DESC")
     end
     render json: @event_subscriptions
   end
@@ -47,13 +47,22 @@ class EventSubscriptionsController < ApplicationController
   # PATCH/PUT /event_subscriptions/1
   # PATCH/PUT /event_subscriptions/1.json
   def update
-    @event_subscription = EventSubscription.find(params[:id])
+    @event_subscription = EventSubscription.find(params["event_subscription"]["id"])
 
-    if @event_subscription.update(event_subscription_params)
-      head :no_content
-    else
-      render json: @event_subscription.errors, status: :unprocessable_entity
+    file_params.each do |requirement|
+      if(requirement["doc"])
+        requirement.symbolize_keys
+        requirement[:doc].symbolize_keys
+        path = "data:#{requirement[:doc][:filetype]};base64, #{requirement[:doc][:base64]}"
+        Document.update(id: requirement[:doc][:id],
+                       user_id: @event_subscription.user_id,
+                       event_id: @event_subscription.event_id,
+                       requirement_id: requirement[:id],
+                       path: path
+                       )
+      end
     end
+    render json: @event_subscription, status: :updated
   end
 
   # DELETE /event_subscriptions/1

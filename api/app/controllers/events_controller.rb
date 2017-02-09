@@ -10,13 +10,13 @@ class EventsController < ApplicationController
       @events = Event.upcoming.order(:registration_deadline)
     end
 
-    render json: @events
+    render json: @events, serializer_params: { current_user: @current_user }
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
-    render json: @event
+    render json: @event, serializer_params: { current_user: @current_user }
   end
 
   # POST /events
@@ -28,9 +28,9 @@ class EventsController < ApplicationController
         req = Requirement.find(req["id"].to_i)
         EventRequirement.create({event_id: @event.id, requirement_id: req.id})
       end
-      render json: @event, status: :created, location: @event
+      render json: @event, serializer_params: { current_user: @current_user }, status: :created
     else
-      render json: @event.errors, status: :unprocessable_entity
+      render json: @event.errors, serializer_params: { current_user: @current_user }, status: :unprocessable_entity
     end
   end
 
@@ -38,11 +38,10 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1.json
   def update
     @event = Event.find(params[:id])
-
     if @event.update(event_params)
-      head :no_content
+      render json: @event, serializer_params: { current_user: @current_user }, status: :updated
     else
-      render json: @event.errors, status: :unprocessable_entity
+      render json: @event.errors, serializer_params: { current_user: @current_user }, status: :unprocessable_entity
     end
   end
 

@@ -1,18 +1,19 @@
-div.container
-  acme-navbar()
-  button.btn.btn-default.orange-button.pull-right(ng-if="role == 'super_admin'" ng-click="newEvent()")
-    p Nuevo Evento
-  div.alert.no-subscriptions(ng-hide="events.length > 0") 
-    h2 No hay eventos cercanos
-  div.alert.no-subscriptions(ng-show="events.length > 0") 
-    h2 Eventos
-  div.row
-    div.col-xs-6.col-md-6(align="left")
-      button#previous-page-button.btn.btn-default(ng-click="previousPage()")
-        span.glyphicon.glyphicon-menu-left
-    div.col-xs-6.col-md-6(align="right")
-      button#next-page-button.btn.btn-default.pull-right(ng-click="nextPage()")
-        span.glyphicon.glyphicon-menu-right
-  
-  div(ng-repeat="item in events")
-    event-item(event="item")
+div
+  acme-navbar
+  div.container
+    button.btn.btn-default.orange-button.pull-right(ng-if="role != 'student'" ng-click="newEvent()")
+      p Nuevo Evento
+    div.alert.no-subscriptions(ng-hide="events.length > 0") 
+      h2 No hay eventos cercanos
+    div.alert.no-subscriptions(ng-show="events.length > 0") 
+      h2 Eventos
+    div.row
+      div.col-xs-6.col-md-6(align="left")
+        button#previous-page-button.btn.btn-default(ng-click="previousPage()")
+          span.glyphicon.glyphicon-menu-left
+      div.col-xs-6.col-md-6(align="right")
+        button#next-page-button.btn.btn-default.pull-right(ng-click="nextPage()")
+          span.glyphicon.glyphicon-menu-right
+    
+    div(ng-repeat="item in events")
+      event-item(event="item")
