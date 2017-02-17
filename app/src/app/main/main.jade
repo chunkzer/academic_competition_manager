@@ -1,39 +1,42 @@
-.container(ng-hide="creatingNewUser")
-  .row
+//- img.background-image(src ="../../assets/images/escudo_unison.png" )
+div.sub-body
+  .container(ng-hide="creatingNewUser")
+    h1.col-md-12.text-center Academic Contest Manager
+    .row
+      .col-md-12
+        .page-header
+          h1.col-md-12.text-center Bienvenido.
     .col-md-12
-      .page-header
-        h1.col-md-12.text-center {{username}}
-  .col-md-12
-    form.form.col-md-8.col-md-offset-4(ng-submit='login()')
-      .col-md-6
-        .form-group
-          input.form-control(type='text', ng-model='username', placeholder='Correo Electronico', required)
-        .form-group
-          input.form-control(type='password', ng-model='password', placeholder='Contraseña', required)
-        .form-group
-          button.btn.btn-success.pull-left(type="submit" id="submit" value="Submit") Iniciar Sesión
-          span.text-danger {{ error }}
-        button.btn.btn-primary.pull-right(ng-click="toggleNewUser()") Nuevo Usuario
+      form.form.col-md-8.col-md-offset-4(ng-submit='login()')
+        .col-md-6
+          .form-group
+            input.form-control(type='text', ng-model='username', placeholder='Correo Electronico', required)
+          .form-group
+            input.form-control(type='password', ng-model='password', placeholder='Contraseña', required)
+          .form-group
+            button.btn.btn-success.pull-left(type="submit" id="submit" value="Submit") Iniciar Sesión
+            span.text-danger {{ error }}
+          button.btn.btn-primary.pull-right(ng-click="toggleNewUser()") Nuevo Usuario
 
-.container(ng-show="creatingNewUser")
-  .row
+  .container(ng-show="creatingNewUser")
+    .row
+      .col-md-12
+        .page-header
+          h1.col-md-12.text-center Nuevo Usuario
     .col-md-12
-      .page-header
-        h1.col-md-12.text-center Nuevo Usuario
-  .col-md-12
-    form.form.col-md-8.col-md-offset-4(ng-submit='createUser()')
-      .col-md-6
-        .form-group
-          input.form-control(type='email', ng-model='newUser.email', placeholder='Correo Electronico', required)
-        .form-group
-          input.form-control(type='text', ng-model='newUser.name', placeholder='Nombre(s)', required)
-        .form-group
-          input.form-control(type='text', ng-model='newUser.last_name', placeholder='Apellido(s)', required)
-        .form-group
-          input.form-control(type='password', ng-model='newUser.password', placeholder='Contraseña', required)  
-        .form-group
-          button.btn.btn-success.pull-left(type="submit" id="submit" value="Submit") Crear Usuario
-          span.text-danger {{ error }}          
-        button.btn.btn-primary.pull-right(ng-click="newUserToggler()") Cancelar
-          
-          
+      form.form.col-md-8.col-md-offset-4(ng-submit='createUser()')
+        .col-md-6
+          .form-group
+            input.form-control(type='email', ng-model='newUser.email', placeholder='Correo Electronico', required)
+          .form-group
+            input.form-control(type='text', ng-model='newUser.name', placeholder='Nombre(s)', required)
+          .form-group
+            input.form-control(type='text', ng-model='newUser.last_name', placeholder='Apellido(s)', required)
+          .form-group
+            input.form-control(type='password', ng-model='newUser.password', placeholder='Contraseña', required)  
+          .form-group
+            button.btn.btn-success.pull-left(type="submit" id="submit" value="Submit") Crear Usuario
+            span.text-danger {{ error }}          
+          button.btn.btn-primary.pull-right(ng-click="newUserToggler()") Cancelar
+            
+            

@@ -5,17 +5,25 @@
   padding: 0.2em 0;
 }
 
-.thumbnail {
-  height: 200px;
-}
-
-.thumbnail img.pull-right {
+.logo {
   width: 50px;
 }
+
 
 .container {
   padding-left: 0px;
   padding-right: 0px;
   margin-left: auto;
   margin-right: auto;
+}
+
+
+.sub-body{
+  background-image: url("../assets/images/escudo_unison_transpertent.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 500px 500px;
+  min-height: 850px;
+  min-width: 800px;
+  /*opacity: 0.2;*/
 }
