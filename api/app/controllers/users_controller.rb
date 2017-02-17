@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :verifier, only: [:create] 
+  skip_before_filter :verifier, only: [:create]
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
@@ -21,12 +21,11 @@ class UsersController < ApplicationController
   def create
     existingUser = User.find_by(email: user_params[:email])
     unless existingUser
-      user_params[:password]
       user = CreateUser.call({user_params: user_params})[:user]
       UserMailer.welcome_email(user, user_params[:password]).deliver_later
       render json: user, status: :created
     else
-    render json: existingUser, status: 403 and return
+    render nothing: true, status: 403 and return
     end
   end
 
@@ -57,6 +56,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :last_name, :email)
+      params.require(:user).permit(:name, :last_name, :email, :password)
     end
 end

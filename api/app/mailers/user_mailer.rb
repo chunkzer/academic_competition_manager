@@ -8,7 +8,7 @@ class UserMailer < ApplicationMailer
   def welcome_email user, password
     @user = user
     @password = password
-    get_target_email_candidate
+    get_target_email_user
 
     mail(to: @target_email, subject:"Plataforma concursos Unison",template_path:'user_mailer', template_name: 'welcome_email')
   end
