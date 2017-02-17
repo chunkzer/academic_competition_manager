@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_filter :verifier, only: [:create] 
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users

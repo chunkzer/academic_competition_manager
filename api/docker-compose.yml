@@ -12,9 +12,9 @@ services:
      - db
    volumes:
      - .:/api
-  # worker:
-  #   image: api_web
-  #   command: bash -c "wait-for-it/wait-for-it.sh db_dev:3306 && rake jobs:work"
+  worker:
+    image: api_web
+    command: bash -c "wait-for-it/wait-for-it.sh db:3306 && rake jobs:work"
   db:
    image: mysql:latest
    ports:

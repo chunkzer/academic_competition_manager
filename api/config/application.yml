@@ -12,8 +12,8 @@ staging:
   BASE_URL: ''
 
 development:
-  GMAIL_USERNAME: 'acm.tester.ruink@gmail.comments'
-  GMAIL_PASSWORD: ''
+  GMAIL_USERNAME: 'ns.pipeline.tester@gmail.com'
+  GMAIL_PASSWORD: 'ONEPERSONATHOUSANDFEELINGS'
   JWT_SECRET: ''
 
   BASE_URL: 'http://localhost:9000/#/'

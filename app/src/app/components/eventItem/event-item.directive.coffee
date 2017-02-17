@@ -12,7 +12,46 @@ angular.module 'servicio'
         vm.userIsAdmin = localStorage.get("role_id") != "student"
         vm.userSubscription = vm.event.userSubscription
 
-        modalController = ($scope, close, item, EventSubscription, ModalService, localStorage) ->
+        modalUpdateSubscription = ($scope, close, lodash, Requirement, Event ) ->
+          $scope.requirements = []
+          Requirement.query().then (requirements) ->
+            for requirement in requirements
+              do (requirement) -> requirement.checked = false
+            $scope.requirements = requirements
+
+          $scope.newEvent =
+            name: ''
+            description: ''
+            deadline: ''
+            eventDate: ''
+            newRequirements: []
+
+          $scope.dateOptions =
+            minDate: new Date()
+
+          checkedRequirements = () ->
+            newRequirements = []
+            lodash.forEach($scope.requirements, (requirement) ->
+              if requirement.checked
+                newRequirements.push(requirement)
+              )
+            newRequirements
+
+          $scope.createEvent = () ->
+            data =
+              name: $scope.newEvent.name
+              description: $scope.newEvent.description
+              registration_deadline: $scope.newEvent.deadline
+              event_date: $scope.newEvent.eventDate
+              requirements: checkedRequirements()
+
+            new Event(data).create()
+            close({}, 200)
+          $scope.approve  = (result) ->
+            close(result, 200)
+
+
+        modalNewSubscription = ($scope, close, item, EventSubscription, ModalService, localStorage) ->
           $scope.item = item
           $scope.doc = []
           $scope.subscribe = () ->
@@ -21,12 +60,8 @@ angular.module 'servicio'
               event_id: $scope.item.id
               approved: false
               requirements: $scope.item.requirements
-            debugger;
             if $scope.item.userSubscription
               data.id = $scope.item.userSubscription.id
-              # EventSubscription.get(userSubscription.id).then(function (sub) ->
-              #   sub.update();
-              # )
               new EventSubscription(data).update()
             else
               new EventSubscription(data).create()
@@ -38,7 +73,7 @@ angular.module 'servicio'
         $scope.newSubscription = () ->
           ModalService.showModal(
             templateUrl: "app/views/modal-templates/new-subscription.html"
-            controller: modalController
+            controller: modalNewSubscription
             inputs:
               item: vm.event
             )
@@ -51,7 +86,7 @@ angular.module 'servicio'
         $scope.updateEvent = () ->
           ModalService.showModal(
             templateUrl: "app/views/modal-templates/edit-event.html"
-            controller: modalController
+            controller: modalUpdateSubscription
             inputs:
               item: vm.event
             )
