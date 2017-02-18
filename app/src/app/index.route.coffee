@@ -22,8 +22,9 @@ angular.module 'servicio'
             userRole = localStorage.get("role_id")
             if !userRole
               $state.transitionTo('login')
-            if userRole != "super_admin"
-              $state.transitionTo('events')
+            else
+              if userRole == "student"
+                $state.transitionTo('events')
           , 100]
 
 

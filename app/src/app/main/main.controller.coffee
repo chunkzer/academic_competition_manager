@@ -11,11 +11,11 @@ angular.module 'servicio'
       password: ""
 
     $scope.login = ->
-      if authentication.signIn($scope.username, $scope.password)
-        $state.go("home")
-      else
-        alert "Error de usuario o contraseña!"
-      return
+      authentication.signIn($scope.username, $scope.password)
+      .then (response) ->
+        if response == true $state.go("home")
+        else alert "Error de usuario o contraseña!"
+      .catch -> alert "No se pudo iniciar sesión!"
     $scope.toggleNewUser = ->
       $scope.creatingNewUser = !$scope.creatingNewUser
       return

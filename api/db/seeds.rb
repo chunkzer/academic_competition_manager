@@ -27,16 +27,15 @@ if Rails.env = "development"
               email: 'adrianvo@yopmail.com',
               password: '$2y$10$VohsaZwlcuFRjfLqabvi3u6QVFkjLu7phwChZlfhNIMKEOnS4oF6K'
               )
-
   Event.create(name: "Concurso de Fisica",
-               event_date: Time.now,
-               registration_deadline: Time.now,
+               event_date: Time.now + 5.day,
+               registration_deadline: Time.now + 5.day,
                description: 'Concurso de Fisica para estudiantes de preparatoria.'
                )
 
   Event.create(name: "Concurso de Matematicas",
-               event_date: Time.now,
-               registration_deadline: Time.now,
+               event_date: Time.now + 5.day,
+               registration_deadline: Time.now + 5.day,
                description: 'Concurso de Matematicas para estudiantes de preparatoria.'
                )
 

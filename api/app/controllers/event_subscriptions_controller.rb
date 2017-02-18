@@ -9,7 +9,7 @@ class EventSubscriptionsController < ApplicationController
     elsif @current_user.admin?
       @event_subscriptions = EventSubscription.event_is_upcoming.where(approved: false)
     else
-      @event_subscriptions = @current_user.event_subscriptions.event_is_upcoming.("approved DESC")
+      @event_subscriptions = @current_user.event_subscriptions.event_is_upcoming.order("approved DESC")
     end
     render json: @event_subscriptions
   end

@@ -34,9 +34,8 @@ div.sub-body
             input.form-control(type='text', ng-model='newUser.last_name', placeholder='Apellido(s)', required)
           .form-group
             input.form-control(type='password', ng-model='newUser.password', placeholder='Contraseña', required)  
-          .form-group
-            button.btn.btn-success.pull-left(type="submit" id="submit" value="Submit") Crear Usuario
-            span.text-danger {{ error }}          
-          button.btn.btn-primary.pull-right(ng-click="newUserToggler()") Cancelar
+          button.btn.btn-success.pull-left(type="submit" id="submit" value="Submit") Crear Usuario
+          span.text-danger {{ error }}          
+          button.btn.btn-primary.pull-right(ng-click="toggleNewUser()" type="button") Cancelar
             
             

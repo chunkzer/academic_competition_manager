@@ -64,9 +64,9 @@ angular.module 'servicio'
       url = '/api/user_sessions'
       data = {email: username, password: password}
       config = {}
+      localStorage.clear()
       $http.post(url, data, config)
       .then (response) ->
-        localStorage.clear()
         userData = response.data
         jwt.token = userData.token
         credentials.role_id = userData.payload.role_id
@@ -76,8 +76,8 @@ angular.module 'servicio'
         localStorage.massStorage(response.data.payload)
         localStorage.store("token", response.data.token)
         localStorage.store("signedIn", 1)
-        true
-      .catch -> false
+        return true
+      .catch -> return false
 
     signOut = ->
       localStorage.clear()
