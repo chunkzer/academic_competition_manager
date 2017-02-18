@@ -13,8 +13,10 @@ angular.module 'servicio'
     $scope.login = ->
       authentication.signIn($scope.username, $scope.password)
       .then (response) ->
-        if response == true $state.go("home")
-        else alert "Error de usuario o contraseña!"
+        if response == true
+          $state.go("home")
+        else
+          alert "Error de usuario o contraseña!"
       .catch -> alert "No se pudo iniciar sesión!"
     $scope.toggleNewUser = ->
       $scope.creatingNewUser = !$scope.creatingNewUser

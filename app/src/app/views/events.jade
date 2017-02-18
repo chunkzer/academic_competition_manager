@@ -7,7 +7,7 @@ div
       h2 No hay eventos cercanos
     div.alert.no-subscriptions(ng-show="events.length > 0") 
       h2 Eventos
-    div.row
+    div.row.page-header(style="margin: 0px;")
       div.col-xs-6.col-md-6(align="left")
         button#previous-page-button.btn.btn-default(ng-click="previousPage()")
           span.glyphicon.glyphicon-menu-left
