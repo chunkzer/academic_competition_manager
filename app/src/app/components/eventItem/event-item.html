@@ -1,40 +1,40 @@
-<div class="col-xs-12 subscription-container active-subscription" ng-click="vm.toggleCollapse()">
-    <div class="col-xs-9 panel-body">
-      <span class="subscription-name bold-text large-text text-color__blue">{{vm.event.name}}</span>
-      <br>
-      <span class="bold-text">
-        {{vm.event.description}}
-      </span>
-    </div>
+<div class="col-xs-12 event-container active-event" ng-click="vm.toggleCollapse()">
+  <div class="col-xs-9 panel-body">
+    <span class="event-name bold-text large-text text-color__blue">{{vm.event.name}}</span>
+    <br>
+    <span class="bold-text">
+      {{vm.event.description}}
+    </span>
+  </div>
 
-    <div class="col-xs-4 panel-body">
-      <span class="role-text bold-text">Fecha: </span>
-      <br>
-      <span class="subscription-skills gray-text">{{vm.event.eventDate}}</span>
-    </div>
+  <div class="col-xs-4 panel-body">
+    <span class="role-text bold-text">Fecha: </span>
+    <br>
+    <span class="event-skills gray-text">{{vm.event.eventDate}}</span>
+  </div>
 
-    <div class="col-xs-4 panel-body">
-      <span class="role-text bold-text">Limite de inscripción: </span>
-      <br>
-      <span class="subscription-skills gray-text">{{vm.event.registrationDeadline}}</span>
-    </div>
+  <div class="col-xs-4 panel-body">
+    <span class="role-text bold-text">Limite de inscripción: </span>
+    <br>
+    <span class="event-skills gray-text">{{vm.event.registrationDeadline}}</span>
+  </div>
 
+  <div class="col-xs-4 panel-body" >
     <div ng-if="!vm.userIsAdmin">
-      <div class="col-xs-4" >
-        <a href="" class="subscription-main-button btn btn-lg btn-default btn-step action-orange" ng-click="newSubscription()">
-          <div ng-if="!vm.userSubscription"> Registrate. </div>
-          <div ng-if="vm.userSubscription && !vm.userSubscription.approved"> Inscripción aprobada! </div>
-          <div ng-if="vm.userSubscription && vm.userSubscription.approved" >Revisa Documentos. </div>
-        </a>
-      </div>
+      <a href="" class="btn btn-lg btn-default btn-step orange-button" ng-click="newSubscription()">
+        <div ng-if="!vm.userSubscription"> Registrate. </div>
+        <div ng-if="vm.userSubscription && vm.userSubscription.approved"> Inscripción aprobada! </div>
+        <div ng-if="vm.userSubscription && !vm.userSubscription.approved" >Revisa Documentos. </div>
+      </a>
     </div>
 
     <div ng-if="vm.userIsAdmin">
       <div class="col-xs-4">
-        <a href="" class="subscription-main-button btn btn-lg btn-default btn-step action-orange" ng-click="updateEvent()">
+        <a href="" class="btn btn-lg btn-default btn-step orange-button" ng-click="updateEvent()">
           Editar Evento
         </a>
       </div>
     </div>
+  </div>
 </div>
 <!-- Button trigger modal -->

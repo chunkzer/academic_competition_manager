@@ -14,25 +14,13 @@ angular.module 'servicio'
         toggleCollapse = () ->
           vm.isCollapsed = !vm.isCollapsed
 
-        modalController = ($scope, doc, sub, Document, close) ->
-          $scope.doc = doc
-          $scope.sub = sub
-          $scope.root = location.protocol + '//' + location.host
-          $scope.dismissModal = (result) ->
-            close(result, 200)
-
-          $scope.approve  = (result) ->
-            doc.approved = true
-            new Document({doc}).update()
-            close(result, 200)
-
         inspectDocument = (doc) ->
           ModalService.showModal(
             templateUrl: "app/views/modal-templates/image.html"
             inputs:
               doc: doc
               sub: vm.subscription
-            controller: modalController
+            controller: "documentCtrl"
             )
           .then((modal) ->
             modal.element.modal()

@@ -80,7 +80,7 @@ class EventSubscriptionsController < ApplicationController
     end
 
     def event_subscription_params
-      params.require(:event_subscription).permit(:user_id, :event_id)
+      params.require(:event_subscription).permit(:user_id, :event_id, :approved)
     end
 
     def file_params

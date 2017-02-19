@@ -7,4 +7,12 @@ class EventSerializer < ActiveModel::Serializer
     return object.event_subscriptions.select {|es| es.user_id == current_user.id}[0] if current_user.student?
   end
 
+  def event_date
+    object.event_date.to_date.iso8601
+  end
+
+  def registration_deadline
+    object.registration_deadline.to_date.iso8601
+  end
+
 end

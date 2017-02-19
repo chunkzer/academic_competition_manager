@@ -14,6 +14,6 @@ div
       div.col-xs-6.col-md-6(align="right")
         button#next-page-button.btn.btn-default.pull-right(ng-click="nextPage()")
           span.glyphicon.glyphicon-menu-right
-    
-    div(ng-repeat="item in events")
-      event-item(event="item")
+      
+    div.item-list
+      event-item( ng-repeat="item in events" event="item")
