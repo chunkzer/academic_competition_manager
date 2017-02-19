@@ -3,7 +3,7 @@ div
   div.container
     h1 Pending Checks
     
-    div.alert.no-subscriptions(ng-hide="(!subscriptionss.length)") 
+    div.alert.no-subscriptions(ng-hide="(!subscriptions.length)") 
       h2 You have pending stuff!
     div.row
       div.col-xs-6.col-md-6(align="left")
@@ -12,7 +12,6 @@ div
       div.col-xs-6.col-md-6(align="right")
         button#next-page-button.btn.btn-default.pull-right(ng-click="nextPage()")
           span.glyphicon.glyphicon-menu-right
-          
-    div(ng-repeat="sub in subscriptions")
-      subscription-item(subscription="sub")
+
+    subscription-item(ng-repeat="item in subscriptions" subscription="item")
     

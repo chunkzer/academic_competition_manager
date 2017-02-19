@@ -1,3 +1,18 @@
+div.item-container{
+  background-color: inherit;
+}
+
+.item-container {
+  display:flex;
+  align-items: center;
+}
+
+.active-item{
+  padding: 0% 0%;
+  cursor: pointer;
+  transition-duration: .5s;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -9,7 +24,6 @@
   width: 50px;
 }
 
-
 .container {
   padding-left: 0px;
   padding-right: 0px;
@@ -17,6 +31,13 @@
   margin-right: auto;
 }
 
+.no-items{
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
 
 .sub-body{
   background-image: url("../assets/images/escudo_unison_transparent.png");
@@ -25,4 +46,60 @@
   background-size: 500px 500px;
   min-height: 850px;
   min-width: 800px;
+}
+
+.orange-button{
+  background-color: #e67000;
+  color: white;
+
+}
+
+.orange-button:hover{
+  background-color: #e97000;
+  color: white;
+  box-shadow: 0 1px 5px #888888;
+}
+
+.orange-button:active:focus{
+  background-color: #e97000;
+  color: white;
+  box-shadow: 0 1px 5px #888888;
+}
+
+.btn-step{
+  padding: 3.5%;
+  margin: 1%;
+  font-size: small;
+  font-weight: 500;
+  min-width: 150px;
+  min-height: 36px;
+}
+
+.text-color-blue {
+  color: #5797ff;
+}
+
+.text-color-link {
+  color: #2042f7;
+  font-family: sans-serif;
+}
+
+.gray-text{
+  color: gray;
+}
+
+.bold-text{
+  font-weight: bold;
+}
+
+.large-text{
+  font-size: large;
+}
+
+.no-access{
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
 }

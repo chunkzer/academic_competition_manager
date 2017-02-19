@@ -1,0 +1,19 @@
+<div class="well well-lg col-xs-12 panel-body item-container">
+  <div class="col-xs-6">
+    <h3 class="bold-text large-text text-color__blue">
+      Requerimientos:
+    </h3>
+    <div center="align">
+      <p>{{vm.doc.requirement}}</p>
+    </div>
+  </div>
+  <div class="col-xs-6 panel-body">
+    <div ng-if="!vm.doc.path.url" href="" class="btn btn-lg btn-default btn-step action-gray">
+      Aun no han subido este documento.
+    </div>
+    <div ng-if="vm.doc.path.url" ng-click="vm.inspectDocument(doc)" class="btn btn-lg btn-default btn-step">
+       <p ng-show="!vm.doc.approved">Inspeccionar documento.</p>
+       <p ng-show="vm.doc.approved">Documento aprobado.</p>
+     </div>
+  </div>
+</div>
