@@ -1,6 +1,5 @@
 angular.module 'servicio'
   .directive 'eventItem', () ->
-
     directive =
       restrict: 'E'
       templateUrl: 'app/components/eventItem/event-item.html'

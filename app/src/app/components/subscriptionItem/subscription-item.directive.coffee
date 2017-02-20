@@ -1,6 +1,5 @@
 angular.module 'servicio'
   .directive 'subscriptionItem', (ModalService) ->
-
     directive =
       restrict: 'E'
       templateUrl: 'app/components/subscriptionItem/subscription-item.html'
@@ -10,7 +9,6 @@ angular.module 'servicio'
       controller: ($scope, $uibModal, $log, $document, ModalService) ->
         vm = $scope.vm
         vm.isCollapsed = true
-
         toggleCollapse = () ->
           vm.isCollapsed = !vm.isCollapsed
 

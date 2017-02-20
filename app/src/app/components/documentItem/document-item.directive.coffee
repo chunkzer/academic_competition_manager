@@ -2,15 +2,12 @@ angular.module 'servicio'
   .directive 'documentItem', (ModalService) ->
     directive =
       restrict: 'E'
-      templateUrl: 'app/components/subscriptionItem/subscription-item.html'
+      templateUrl: 'app/components/documentItem/document-item.html'
       scope: doc: '='
       controllerAs: 'vm'
       bindToController: true
       controller: ($scope, $uibModal, $log, ModalService) ->
         vm = $scope.vm
-        toggleCollapse = () ->
-          vm.isCollapsed = !vm.isCollapsed
-
         inspectDocument = (doc) ->
           ModalService.showModal(
             templateUrl: "app/views/modal-templates/image.html"

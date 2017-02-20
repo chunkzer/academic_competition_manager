@@ -1,7 +1,6 @@
 angular.module 'servicio'
-  .controller 'documentCtrl', ($scope, doc, sub, Document, close) ->
+  .controller 'documentCtrl', ($scope, doc, Document, close) ->
     $scope.doc = doc
-    $scope.sub = sub
     $scope.root = location.protocol + '//' + location.host
     $scope.dismissModal = (result) ->
       close(result, 200)
