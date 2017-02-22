@@ -48,7 +48,7 @@ angular.module 'servicio'
           vm.menu = [
             {
               name: "Mis Eventos"
-              url: "#/events?=mine"
+              url: "#/home"
               func: vm.noOp
             },
             {

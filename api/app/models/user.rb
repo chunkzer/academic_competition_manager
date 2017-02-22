@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   has_many   :event_subscriptions
   has_many   :documents
 
+  def events
+    self.event_subscriptions.map {|es| es.event}
+  end
+
   def full_name
     "#{self.name} #{self.last_name}"
   end

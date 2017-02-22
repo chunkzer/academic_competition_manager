@@ -1,19 +1,37 @@
 <div class="well well-lg col-xs-12 panel-body item-container">
   <div class="col-xs-6">
-    <h3 class="bold-text large-text text-color__blue">
+    <h3 class="bold-text large-text text-color-blue">
       Requerimientos:
     </h3>
     <div center="align">
-      <p>{{vm.doc.requirement}}</p>
+      <p>{{vm.requirement.description}}</p>
     </div>
   </div>
-  <div class="col-xs-6 panel-body">
-    <div ng-if="!vm.doc.path.url" href="" class="btn btn-lg btn-default btn-step action-gray">
-      Aun no han subido este documento.
+  <div ng-if="vm.userIsAdmin" class="col-xs-6 panel-body">
+    <div ng-if="!vm.doc" class="btn btn-lg btn-default btn-step action-gray">
+      <p >El estudiante aun no ha subido este documento.</p>
     </div>
-    <div ng-if="vm.doc.path.url" ng-click="vm.inspectDocument(vm.doc)" class="btn btn-lg btn-default btn-step">
-       <p ng-show="!vm.doc.approved">Inspeccionar documento.</p>
-       <p ng-show="vm.doc.approved">Documento aprobado.</p>
+    <div ng-if="vm.doc" ng-click="vm.inspectDocument(vm.requirement, vm.event)" class="btn btn-lg btn-default btn-step">
+       <p ng-show="vm.doc.state == 'pending_review'">Inspeccionar documento.</p>
+       <p ng-show="vm.doc.state == 'approved'">Documento aprobado.</p>
+       <p ng-show="vm.doc.state == 'rejected'">Documento rechazado.</p>
+     </div>
+  </div>
+
+  <div ng-if="!vm.userIsAdmin" class="col-xs-6 panel-body">
+    <div ng-if="!vm.doc" class="btn btn-lg btn-default btn-step action-gray" ng-click="vm.inspectDocument(vm.requirement, vm.event)">
+      <p>Aun no has enviado este requerimiento!</p>
+    </div>
+    <div ng-if="vm.doc">
+       <div ng-if="vm.doc.state == 'pending_review'" ng-click="vm.inspectDocument(vm.requirement, vm.event)" class="btn btn-lg btn-default btn-step">
+         Esperando revisión...
+       </div>
+       <div ng-if="vm.doc.state == 'approved'" class="btn btn-lg btn-default btn-step">
+         Requerimiento Aprobado.
+       </div>
+       <div ng-if="vm.doc.state == 'rejected'" ng-click="vm.inspectDocument(vm.requirement, vm.event)" class="btn btn-lg btn-default btn-step">
+         Requerimiento Inaceptable.
+       </div>
      </div>
   </div>
 </div>

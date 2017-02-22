@@ -9,7 +9,6 @@ class EventsController < ApplicationController
     else
       @events = Event.upcoming.order(:registration_deadline)
     end
-
     render json: @events, serializer_params: { current_user: @current_user }
   end
 

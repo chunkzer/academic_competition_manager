@@ -15,6 +15,9 @@
               </div>
               <input type="file" ng-model="requirement.doc" base-sixty-four-input>
             </div>
+            <div ng-if="item.requirements.length == 0">
+              <p>Este evento no require nada de documentación.</p>
+            </div>
          </div>
         </div>
       </div>

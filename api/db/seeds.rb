@@ -14,13 +14,6 @@ if Rails.env = "development"
               password: '$2y$10$VohsaZwlcuFRjfLqabvi3u6QVFkjLu7phwChZlfhNIMKEOnS4oF6K'
               )
 
-  User.create(role_id: 1,
-              name: 'Juan Jose',
-              last_name: 'Spyros Refrän',
-              email: 'student2@yopmail.com',
-              password: '$2y$10$VohsaZwlcuFRjfLqabvi3u6QVFkjLu7phwChZlfhNIMKEOnS4oF6K'
-              )
-
   User.create(role_id: 2,
               name: 'Adrianvo',
               last_name: 'Unison',
@@ -50,42 +43,13 @@ if Rails.env = "development"
                           )
 
   EventSubscription.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
-                          user_id: User.find_by(name: 'Jose Armando').id,
-                          approved: false
-                          )
-
-  EventSubscription.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
-                          user_id: User.find_by(name: 'Juan Jose').id,
-                          approved: false
+                          user_id: User.find_by(email: 'student1@yopmail.com').id,
+                          approved: true
                           )
 
   EventSubscription.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
-                          user_id: User.find_by(name: 'Juan Jose').id,
+                          user_id: User.find_by(email: 'student1@yopmail.com').id,
                           approved: false
                           )
-
-  Document.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
-                    user_id: User.find_by(name: 'Juan Jose').id,
-                    requirement_id: Requirement.find_by(description: "Copia de Acta de Nacimiento.").id,
-                    approved: false
-                   )
-
-  Document.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
-                   user_id: User.find_by(name: 'Juan Jose').id,
-                   requirement_id: Requirement.find_by(description: "Foto de frente.").id,
-                   approved: false
-                  )
-
-  Document.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
-                   user_id: User.find_by(name: 'Juan Jose').id,
-                   requirement_id: Requirement.find_by(description: "Copia de Acta de Nacimiento.").id,
-                   approved: false
-                  )
-
-  Document.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
-                    user_id: User.find_by(name: 'Jose Armando').id,
-                    requirement_id: Requirement.find_by(description: "Copia de Acta de Nacimiento.").id,
-                    approved: false
-                  )
 
 end

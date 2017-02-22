@@ -23,8 +23,13 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    @document = Document.new(document_params)
-
+    path =  path_params.present? ? "data:#{path_params['filetype']};base64, #{path_params['base64']}" : nil
+    @document = Document.create(user_id: @current_user.id,
+                   event_id: document_params[:event_id],
+                   requirement_id: document_params[:requirement_id],
+                   state: document_params[:state],
+                   path: path
+                   )
     if @document.save
       render json: @document, status: :created, location: @document
     else
@@ -36,7 +41,9 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1.json
   def update
     @document = Document.find(params[:id])
-    if @document.update(document_params)
+    @document.update(document_params)
+    @document.path = "data:#{path_params['filetype']};base64, #{path_params['base64']}" if path_params["filetype"].present?
+    if @document.save
       head :no_content
     else
       render json: @document.errors, status: :unprocessable_entity
@@ -58,6 +65,10 @@ class DocumentsController < ApplicationController
     end
 
     def document_params
-      params.require(:document).permit(:user_id, :event_id, :approved)
+      params.require(:document).permit(:user_id, :event_id, :requirement_id, :state, :path)
+    end
+
+    def path_params
+      params.require(:document).fetch(:path)
     end
 end

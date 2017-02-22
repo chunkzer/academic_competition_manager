@@ -1,30 +1,50 @@
-<div class="col-xs-12 item-container active-item" ng-click="vm.toggleCollapse()">
-  <!-- candidate's name -->
-    <div class="col-xs-6 panel-body">
-      <span class="bold-text large-text text-color-blue">{{vm.subscription.user.name}} {{vm.subscription.user.lastName}}</span>
-      <br>
-      <span class="bold-text">
-        {{vm.subscription.event.name}} <br> |  <span class="gray-text">{{vm.subscription.event.description}}</span>
-      </span>
-    </div>
-    <!-- candidate's contact info -->
-    <div class="col-xs-6 panel-body">
-      <span class="role-text bold-text">Correo electronico: </span>
-      <br>
-      <span class="gray-text">{{vm.subscription.user.email}}</span>
-    </div>
+<div ng-if="vm.userIsAdmin" class="col-xs-12 item-container active-item" ng-click="vm.toggleCollapse()">
+  <div class="col-xs-6 panel-body">
+    <span class="bold-text large-text text-color-blue">{{vm.subscription.user.name}} {{vm.subscription.user.lastName}}</span>
+    <br>
+    <span class="bold-text">
+      {{vm.subscription.event.name}} <br> |  <span class="gray-text">{{vm.subscription.event.description}}</span>
+    </span>
+  </div>
 
-    <!-- candidate's step -->
-    <div ng-if="!vm.subscription.approved"  class="col-xs-4">
-      <a href="" class="btn btn-lg btn-default btn-step orange-button">Hay documentacion que aprobar.</a>
-    </div>
+  <div class="col-xs-6 panel-body">
+    <span class="role-text bold-text">Correo electronico: </span>
+    <br>
+    <span class="gray-text">{{vm.subscription.user.email}}</span>
+  </div>
 
-    <div ng-if="vm.subscription.approved" class="col-xs-4">
-      <a href="" class="btn btn-lg btn-default btn-step gray-button">La documentacion ya esta en orden.</a>
-    </div>
+  <div ng-if="!vm.subscription.approved"  class="col-xs-4">
+    <a href="" class="btn btn-lg btn-default btn-step orange-button">Hay documentacion que aprobar.</a>
+  </div>
+
+  <div ng-if="vm.subscription.approved" class="col-xs-4">
+    <a href="" class="btn btn-lg btn-default btn-step gray-button">La documentacion ya esta en orden.</a>
+  </div>
 </div>
+
+<div ng-if="!vm.userIsAdmin" class="col-xs-12 item-container active-item" ng-click="vm.toggleCollapse()">
+  <div class="col-xs-6 panel-body bold-text">
+    <span class="large-text text-color-blue">{{vm.subscription.event.name}}</span>
+    <br>
+    <span class="gray-text">{{vm.subscription.event.description}}</span>
+  </div>
+
+  <div class="col-xs-6 panel-body">
+    <span class="bold-text">Fecha del evento: </span>
+    <br>
+    <span class="gray-text">{{vm.subscription.event.eventDate}}</span>
+  </div>
+
+  <div class="col-xs-4" ng-click="inspectDocument()">
+    <div class="orange-button btn btn-lg btn-default btn-step" ng-if="!vm.subscription.approved">
+      No aprobado.
+    </div>
+    <div class="gray-button btn btn-lg btn-default btn-step" ng-if="vm.subscription.approved">
+      Ya estas inscrito!
+    </div>
+  </div>
+</div>
+
 <div ng-hide="vm.isCollapsed" class="col-xs-12" uib-collapse="vm.isCollapsed">
-  <document-item ng-repeat="item in vm.subscription.documents" doc="item"> </document-item>
+  <document-item ng-repeat="item in vm.subscription.requirements" requirement="item" event="vm.subscription.event"> </document-item>
 </div>
-
-<!-- Button trigger modal -->

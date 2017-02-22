@@ -24,7 +24,7 @@ class EventSubscriptionsController < ApplicationController
   # POST /event_subscriptions.json
   def create
     @event_subscription = EventSubscription.new(event_subscription_params)
-
+    @event_subscription[:approved] = @event_subscription.event.requirements.empty?
     if @event_subscription.save
       file_params.each do |requirement|
         if(requirement["doc"])
@@ -34,10 +34,12 @@ class EventSubscriptionsController < ApplicationController
           Document.create(user_id: @event_subscription.user_id,
                          event_id: @event_subscription.event_id,
                          requirement_id: requirement[:id],
+                         state: "pending_review",
                          path: path
                          )
         end
       end
+
       render json: @event_subscription, status: :created, location: @event_subscription
     else
       render json: @event_subscription.errors, status: :unprocessable_entity
@@ -47,7 +49,8 @@ class EventSubscriptionsController < ApplicationController
   # PATCH/PUT /event_subscriptions/1
   # PATCH/PUT /event_subscriptions/1.json
   def update
-    @event_subscription = EventSubscription.find(params["event_subscription"]["id"])
+    @event_subscription.update(event_subscription_params)
+    @event_subscription.save
 
     file_params.each do |requirement|
       if(requirement["doc"])
@@ -58,6 +61,7 @@ class EventSubscriptionsController < ApplicationController
                        user_id: @event_subscription.user_id,
                        event_id: @event_subscription.event_id,
                        requirement_id: requirement[:id],
+                       state: "pending_review",
                        path: path
                        )
       end
@@ -69,7 +73,6 @@ class EventSubscriptionsController < ApplicationController
   # DELETE /event_subscriptions/1.json
   def destroy
     @event_subscription.destroy
-
     head :no_content
   end
 

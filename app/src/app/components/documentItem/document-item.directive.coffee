@@ -3,16 +3,21 @@ angular.module 'servicio'
     directive =
       restrict: 'E'
       templateUrl: 'app/components/documentItem/document-item.html'
-      scope: doc: '='
+      scope:
+        requirement: '='
+        event: '='
       controllerAs: 'vm'
       bindToController: true
-      controller: ($scope, $uibModal, $log, ModalService) ->
+      controller: ($scope, $uibModal, $log, ModalService, localStorage) ->
         vm = $scope.vm
-        inspectDocument = (doc) ->
+        vm.doc = vm.requirement.document
+        vm.userIsAdmin = localStorage.get("role_id") != "student"
+        inspectDocument = (requirement, event) ->
           ModalService.showModal(
-            templateUrl: "app/views/modal-templates/image.html"
+            templateUrl: "app/views/modal-templates/document.html"
             inputs:
-              doc: doc
+              requirement: requirement
+              event: event
             controller: "documentCtrl"
             )
           .then((modal) ->

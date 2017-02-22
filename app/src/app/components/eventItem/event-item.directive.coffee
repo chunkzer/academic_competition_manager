@@ -6,7 +6,7 @@ angular.module 'servicio'
       scope: event: '='
       controllerAs: 'vm'
       bindToController: true
-      controller: ($scope, localStorage, EventSubscription, ModalService) ->
+      controller: ($scope, localStorage, ModalService) ->
         vm = $scope.vm
         vm.userIsAdmin = localStorage.get("role_id") != "student"
         vm.userSubscription = vm.event.userSubscription

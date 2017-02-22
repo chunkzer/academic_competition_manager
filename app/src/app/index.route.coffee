@@ -19,12 +19,8 @@ angular.module 'servicio'
         controller: "HomeCtrl"
         onEnter: ['localStorage', '$state', '$timeout',(localStorage, $state, $timeout) ->
           $timeout ->
-            userRole = localStorage.get("role_id")
-            if !userRole
+            if !localStorage.get("signedIn")
               $state.transitionTo('login')
-            else
-              if userRole == "student"
-                $state.transitionTo('events')
           , 100]
 
 

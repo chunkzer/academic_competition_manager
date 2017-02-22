@@ -1,4 +1,5 @@
 class Document < ActiveRecord::Base
+  enum state: [:unsubmitted, :pending_review, :approved, :rejected]
 
   belongs_to :user
   belongs_to :event
