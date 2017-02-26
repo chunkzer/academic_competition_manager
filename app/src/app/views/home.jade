@@ -1,10 +1,10 @@
 div
   acme-navbar
   div.container
-    h1 Pending Checks
-    
-    div.alert.no-subscriptions(ng-hide="(!subscriptions.length)") 
-      h2 You have pending stuff!
+    button.btn.btn-default.orange-button.pull-right(ng-if="userIsAdmin")
+      p Nuevo Evento
+    h1(align="center" ng-hide="userIsAdmin") Tus Eventos
+    h1(align="center" ng-hide="!userIsAdmin") Revisiones pendientes
     div.row
       div.col-xs-6.col-md-6(align="left")
         button#previous-page-button.btn.btn-default(ng-click="previousPage()")

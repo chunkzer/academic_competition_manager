@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :requirements, except: [:new, :edit]
     resources :event_requirements, except: [:new, :edit]
     resources :event_subscriptions, except: [:new, :edit]
-    resources :events, except: [:new, :edit]
+    resources :events
     resources :users, except: [:new, :edit]
     resources :user_sessions, only: [:create]
     resources :documents

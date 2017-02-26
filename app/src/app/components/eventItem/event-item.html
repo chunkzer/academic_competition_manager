@@ -14,9 +14,15 @@
   </div>
 
   <div class="col-xs-4 panel-body">
-    <span class="bold-text">Limite de inscripción: </span>
+    <span class="bold-text">Fecha Limite: </span>
     <br>
     <span class="gray-text">{{vm.event.registrationDeadline}}</span>
+  </div>
+
+  <div ng-if="vm.userIsAdmin" class="col-xs-4 panel-body">
+    <div class="btn btn-lg btn-default btn-step orange-button" ng-click="attendeeList()">
+      Lista de Inscripción
+    </div>
   </div>
 
   <div class="col-xs-4 panel-body" >
@@ -32,9 +38,9 @@
 
     <div ng-if="vm.userIsAdmin">
       <div class="col-xs-4">
-        <a href="" class="btn btn-lg btn-default btn-step orange-button" ng-click="updateEvent()">
+        <div class="btn btn-lg btn-default btn-step orange-button" ng-click="updateEvent()">
           Editar Evento
-        </a>
+        </div>
       </div>
     </div>
   </div>

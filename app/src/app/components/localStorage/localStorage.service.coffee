@@ -51,6 +51,10 @@ angular.module 'servicio'
       data.payload.user_id = localStorage.getItem('user_id')
       data.payload.token = localStorage.getItem('token')
       data
+    userIsAdmin = ->
+      if isAvailable()
+        return localStorage.getItem('role_id') != 'student'
+      false
 
     vm.isAvailable = isAvailable
     vm.massStorage = massStorage
@@ -61,4 +65,5 @@ angular.module 'servicio'
     vm.clear = clear
     vm.clearFilters = clearFilters
     vm.payload = payload
+    vm.userIsAdmin = userIsAdmin
     vm

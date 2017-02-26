@@ -1,6 +1,6 @@
 angular.module "servicio"
   .controller "EventsCtrl", ($scope, Event, localStorage, ModalService, Requirement, lodash) ->
-    $scope.role = localStorage.get("role_id")
+    $scope.userIsAdmin = localStorage.userIsAdmin()
     page = 1
     Event.query({page: page}).then (events) -> $scope.events = events
     $scope.nextPage = () ->
@@ -12,8 +12,10 @@ angular.module "servicio"
 
     $scope.newEvent = () ->
       ModalService.showModal(
-        templateUrl: "app/views/modal-templates/new-event.html"
-        controller: "newEventCtrl"
+        templateUrl: "app/views/modal-templates/event.html"
+        controller: "eventCtrl"
+        inputs:
+          event: {}
         )
       .then((modal) ->
         modal.element.modal()

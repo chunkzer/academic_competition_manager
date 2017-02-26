@@ -1,11 +1,11 @@
 div
   acme-navbar
   div.container
-    button.btn.btn-default.orange-button.pull-right(ng-if="role != 'student'" ng-click="newEvent()")
+    button.btn.btn-default.orange-button.pull-right(ng-if="userIsAdmin" ng-click="newEvent()")
       p Nuevo Evento
-    div.alert.no-subscriptions(ng-hide="events.length > 0") 
+    div.alert.no-subscriptions(align="center" ng-hide="events.length > 0") 
       h2 No hay eventos cercanos
-    div.alert.no-subscriptions(ng-show="events.length > 0") 
+    div.alert.no-subscriptions(align="center" ng-show="events.length > 0") 
       h2 Eventos
     div.row.page-header(style="margin: 0px;")
       div.col-xs-6.col-md-6(align="left")

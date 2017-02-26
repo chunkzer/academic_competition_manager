@@ -1,5 +1,6 @@
 angular.module "servicio"
   .controller "HomeCtrl", ($scope, EventSubscription, localStorage) ->
+    $scope.userIsAdmin = localStorage.userIsAdmin()
     page = 1
     EventSubscription.query({page: page}).then (subscriptions) -> $scope.subscriptions = subscriptions
     $scope.nextPage = () ->

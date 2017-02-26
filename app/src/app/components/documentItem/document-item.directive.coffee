@@ -11,7 +11,8 @@ angular.module 'servicio'
       controller: ($scope, $uibModal, $log, ModalService, localStorage) ->
         vm = $scope.vm
         vm.doc = vm.requirement.document
-        vm.userIsAdmin = localStorage.get("role_id") != "student"
+        vm.userIsAdmin = localStorage.userIsAdmin()
+        
         inspectDocument = (requirement, event) ->
           ModalService.showModal(
             templateUrl: "app/views/modal-templates/document.html"

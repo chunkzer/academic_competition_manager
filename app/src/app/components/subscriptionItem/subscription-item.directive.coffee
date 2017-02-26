@@ -8,7 +8,7 @@ angular.module 'servicio'
       bindToController: true
       controller: ($scope, $uibModal, $log, $document, ModalService, localStorage) ->
         vm = $scope.vm
-        vm.userIsAdmin = localStorage.get("role_id") != "student"
+        vm.userIsAdmin = localStorage.userIsAdmin()
         vm.isCollapsed = true
         toggleCollapse = () ->
           vm.isCollapsed = !vm.isCollapsed

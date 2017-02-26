@@ -8,7 +8,7 @@ angular.module 'servicio'
       bindToController: true
       controller: ($scope, localStorage, ModalService) ->
         vm = $scope.vm
-        vm.userIsAdmin = localStorage.get("role_id") != "student"
+        vm.userIsAdmin = localStorage.userIsAdmin()
         vm.userSubscription = vm.event.userSubscription
         $scope.newSubscription = () ->
           ModalService.showModal(
@@ -22,4 +22,19 @@ angular.module 'servicio'
             modal.close.then((result) ->
               backdrop = document.getElementsByClassName("modal-backdrop fade in")
               backdrop[0].parentNode.removeChild(backdrop[0])))
+
+        $scope.updateEvent = () ->
+          ModalService.showModal(
+            templateUrl: "app/views/modal-templates/event.html"
+            controller: "eventCtrl"
+            inputs:
+              event: vm.event
+            )
+          .then((modal) ->
+            modal.element.modal()
+            modal.close.then((result) ->
+              backdrop = document.getElementsByClassName("modal-backdrop fade in")
+              backdrop[0].parentNode.removeChild(backdrop[0])
+            )
+          )
         vm
