@@ -8,28 +8,32 @@
     </div>
   </div>
   <div ng-if="vm.userIsAdmin" class="col-xs-6 panel-body">
-    <div ng-if="!vm.doc" class="btn btn-lg btn-default btn-step action-gray">
+    <div ng-if="!vm.doc" class="btn btn-lg btn-default btn-step success-button">
       <p >El estudiante aun no ha subido este documento.</p>
     </div>
-    <div ng-if="vm.doc" ng-click="vm.inspectDocument(vm.requirement, vm.event)" class="btn btn-lg btn-default btn-step">
-       <p ng-show="vm.doc.state == 'pending_review'">Inspeccionar documento.</p>
-       <p ng-show="vm.doc.state == 'approved'">Documento aprobado.</p>
-       <p ng-show="vm.doc.state == 'rejected'">Documento rechazado.</p>
+    <div ng-if="vm.doc && vm.doc.state == 'pending_review'" ng-click="vm.inspectDocument(vm.requirement, vm.event)" class="btn btn-lg btn-default btn-step btn-warning">
+      <p>Inspeccionar documento.</p>
+    </div>
+    <div ng-if="vm.doc && vm.doc.state == 'approved'" ng-click="vm.inspectDocument(vm.requirement, vm.event)" class="btn btn-lg btn-default btn-step btn-success">
+       <p>Documento aprobado.</p>
+     </div>
+     <div ng-if="vm.doc && vm.doc.state == 'rejected'" ng-click="vm.inspectDocument(vm.requirement, vm.event)" class="btn btn-lg btn-default btn-step btn-danger">
+        <p>Documento rechazado.</p>
      </div>
   </div>
 
   <div ng-if="!vm.userIsAdmin" class="col-xs-6 panel-body">
-    <div ng-if="!vm.doc" class="btn btn-lg btn-default btn-step action-gray" ng-click="vm.inspectDocument(vm.requirement, vm.event)">
+    <div ng-if="!vm.doc" class="btn btn-lg btn-default btn-step" ng-click="vm.inspectDocument(vm.requirement, vm.event)">
       <p>Aun no has enviado este requerimiento!</p>
     </div>
     <div ng-if="vm.doc">
-       <div ng-if="vm.doc.state == 'pending_review'" ng-click="vm.inspectDocument(vm.requirement, vm.event)" class="btn btn-lg btn-default btn-step">
+       <div ng-if="vm.doc.state == 'pending_review'" ng-click="vm.inspectDocument(vm.requirement, vm.event)" class="btn btn-lg btn-default btn-step success-button">
          Esperando revisión...
        </div>
-       <div ng-if="vm.doc.state == 'approved'" class="btn btn-lg btn-default btn-step">
+       <div ng-if="vm.doc.state == 'approved'" class="btn btn-lg btn-default btn-step success-button">
          Requerimiento Aprobado.
        </div>
-       <div ng-if="vm.doc.state == 'rejected'" ng-click="vm.inspectDocument(vm.requirement, vm.event)" class="btn btn-lg btn-default btn-step">
+       <div ng-if="vm.doc.state == 'rejected'" ng-click="vm.inspectDocument(vm.requirement, vm.event)" class="btn btn-lg btn-default btn-step success-button">
          Requerimiento Inaceptable.
        </div>
      </div>

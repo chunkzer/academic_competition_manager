@@ -66,6 +66,24 @@ div.item-container{
   box-shadow: 0 1px 5px #888888;
 }
 
+.success-button{
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  color: white;
+}
+
+.success-button:hover{
+  background-color: #42b85c;
+  color: white;
+  box-shadow: 0 1px 5px #888888;
+}
+
+.success-button:active:focus{
+  background-color: #42b85c;
+  color: white;
+  box-shadow: 0 1px 5px #888888;
+}
+
 .btn-step{
   padding: 3.5%;
   margin: 1%;

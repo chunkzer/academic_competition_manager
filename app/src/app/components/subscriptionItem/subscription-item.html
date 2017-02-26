@@ -14,11 +14,15 @@
   </div>
 
   <div ng-if="!vm.subscription.approved"  class="col-xs-4">
-    <a href="" class="btn btn-lg btn-default btn-step orange-button">Hay documentacion que aprobar.</a>
+    <div class="btn btn-lg btn-default btn-step orange-button">
+      Hay documentacion que aprobar
+    </div>
   </div>
 
   <div ng-if="vm.subscription.approved" class="col-xs-4">
-    <a href="" class="btn btn-lg btn-default btn-step gray-button">La documentacion ya esta en orden.</a>
+    <div class="btn btn-lg btn-default btn-step success-button">
+      Aceptado!
+    </div>
   </div>
 </div>
 
