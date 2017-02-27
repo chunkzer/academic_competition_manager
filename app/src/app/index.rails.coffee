@@ -1,7 +1,7 @@
 angular.module 'servicio'
-  .factory "User", (RailsResource) ->
+  .factory "User", (RailsResource, localStorage) ->
     class User extends RailsResource
-      @configure url: "/api/users", name: "user",
+      @configure url: "/api/users", name: "user", defaultParams: localStorage.payload()
 
   .factory "Event", (RailsResource, localStorage) ->
     class Event extends RailsResource
