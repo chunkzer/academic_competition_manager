@@ -7,14 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 if Rails.env = "development"
 
-  User.create(role_id: 1,
+  User.create(role_id: User.roles[:student],
               name: 'Jose Armando',
               last_name: 'Valencia Ramirez',
               email: 'student1@yopmail.com',
               password: '$2y$10$VohsaZwlcuFRjfLqabvi3u6QVFkjLu7phwChZlfhNIMKEOnS4oF6K'
               )
 
-  User.create(role_id: 2,
+  User.create(role_id: User.roles[:admin],
               name: 'Adrianvo',
               last_name: 'Unison',
               email: 'adrianvo@yopmail.com',

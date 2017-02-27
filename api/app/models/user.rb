@@ -1,6 +1,6 @@
 require 'bcrypt'
 class User < ActiveRecord::Base
-  enum role_id: [:zero, :student, :admin, :super_admin, :tutor]
+  enum role_id: [:zero, :student, :tutor, :admin, :super_admin]
   has_many   :event_subscriptions
   has_many   :documents
 
@@ -17,5 +17,15 @@ class User < ActiveRecord::Base
       self.password = BCrypt::Password.create(self.password).sub!("$2a", "$2y")
     end
   end
+
+  def self.roles
+    {
+      student: 1,
+      tutor: 2,
+      admin: 3,
+      super_admin: 4
+    }
+  end
+
 
 end

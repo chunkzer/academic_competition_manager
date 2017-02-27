@@ -5,8 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-
+    @users = User.where("role_id < ?", User.roles[@current_user.role_id.to_sym])
     render json: @users
   end
 
@@ -33,11 +32,10 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     @user = User.find(params[:id])
-    if @current_user.role_id != "student" && @user.update(user_params)
-      head :no_content
-    else
-      render json: @user.errors, status: :unprocessable_entity
+    if @current_user.id == @user.id || User.roles[@current_user.role_id.to_sym] < user_params[:role_id]
+      head :no_content if @user.update(user_params)
     end
+    render json: @user.errors, status: :unprocessable_entity
   end
 
   # DELETE /users/1
