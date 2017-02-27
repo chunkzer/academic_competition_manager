@@ -1,0 +1,19 @@
+div
+  acme-navbar
+  div.container
+    button.btn.btn-default.orange-button.pull-right(ng-if="userIsAdmin" ng-click="saveRequirement()")
+      p Nuevo Requerimiento
+    div.alert.no-subscriptions(align="center" ng-hide="requirements.length > 0") 
+      h2 No hay requerimientos definidos
+    div.alert.no-subscriptions(align="center" ng-show="requirements.length > 0") 
+      h2 Requerimientos
+    div.row.page-header(style="margin: 0px;")
+      div.col-xs-6.col-md-6(align="left")
+        button#previous-page-button.btn.btn-default(ng-click="previousPage()")
+          span.glyphicon.glyphicon-menu-left
+      div.col-xs-6.col-md-6(align="right")
+        button#next-page-button.btn.btn-default.pull-right(ng-click="nextPage()")
+          span.glyphicon.glyphicon-menu-right
+      
+    div.item-list
+      requirement-item( ng-repeat="requirement in requirements" requirement="requirement")

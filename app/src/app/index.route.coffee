@@ -44,6 +44,16 @@ angular.module 'servicio'
               $state.transitionTo('login')
           , 100]
 
+      .state "requirements",
+        url: "/requirements",
+        templateUrl: "app/views/requirements.html",
+        controller: "RequirementsCtrl"
+        onEnter: ['localStorage', '$state', '$timeout',(localStorage, $state, $timeout) ->
+          $timeout ->
+            if !localStorage.get("signedIn")
+              $state.transitionTo('login')
+          , 100]
+
       .state "config",
         url: "/config",
         templateUrl: "app/views/config.html",

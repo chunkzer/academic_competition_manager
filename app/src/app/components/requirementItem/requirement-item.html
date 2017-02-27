@@ -1,0 +1,21 @@
+<div class="col-xs-12 item-container active-item">
+  <div class="col-xs-5 panel-body">
+    <span class="bold-text large-text text-color-blue">{{vm.requirement.name}}</span>
+  </div>
+
+  <div class="col-xs-4 panel-body">
+    Super Admin:
+    <br>
+    <p>{{vm.requirement.description}}</p>
+  </div>
+
+  <div class="col-xs-4 panel-body">
+    Habilitado:
+    <br>
+    <toggle-switch
+      ng-model="vm.requirement.enabled"
+      ng-click="vm.toggleRequirement()"
+      >
+      <toggle-switch>
+  </div>
+</div>

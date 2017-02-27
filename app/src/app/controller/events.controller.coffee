@@ -1,5 +1,5 @@
 angular.module "servicio"
-  .controller "EventsCtrl", ($scope, Event, localStorage, ModalService, Requirement, lodash) ->
+  .controller "EventsCtrl", ($scope, Event, localStorage, ModalService) ->
     $scope.userIsAdmin = localStorage.userIsAdmin()
     page = 1
     Event.query({page: page}).then (events) -> $scope.events = events
