@@ -8,27 +8,47 @@
   </div>
 
   <div class="col-xs-4 panel-body">
-    <span class="bold-text">Super Administrador: </span>
+    Super Admin:
     <br>
-    <input type="checkbox" data-toggle="toggle">
+    <toggle-switch
+      ng-model="vm.super_admin"
+      ng-disabled="vm.super_admin"
+      ng-click="vm.toggleRole('super_admin')"
+      >
+    <toggle-switch>
   </div>
 
   <div class="col-xs-4 panel-body">
-    <span class="bold-text">Administrador: </span>
+    Admin:
     <br>
-    <input type="checkbox" data-toggle="toggle">
+    <toggle-switch
+      ng-model="vm.admin"
+      ng-disabled="vm.admin"
+      ng-click="vm.toggleRole('admin')"
+      >
+    <toggle-switch>
   </div>
 
   <div class="col-xs-4 panel-body">
-    <span class="bold-text">Tutor: </span>
+    Tutor:
     <br>
-    <input type="checkbox" data-toggle="toggle">
+    <toggle-switch
+      ng-model="vm.tutor"
+      ng-disabled="vm.tutor"
+      ng-click="vm.toggleRole('tutor')"
+      >
+    <toggle-switch>
   </div>
 
   <div class="col-xs-4 panel-body">
-    <span class="bold-text">Estudiante: </span>
+    Student:
     <br>
-    <input type="checkbox" data-toggle="toggle">
+    <toggle-switch
+      ng-model="vm.student"
+      ng-disabled="vm.student"
+      ng-click="vm.toggleRole('student')"
+      >
+      <toggle-switch>
   </div>
 </div>
 <!-- Button trigger modal -->

@@ -1,4 +1,5 @@
 angular.module 'servicio', ['angularModalService',
+                            'toggle-switch',
                             'ui.bootstrap',
                             'ui.router',
                             'ngAria',
