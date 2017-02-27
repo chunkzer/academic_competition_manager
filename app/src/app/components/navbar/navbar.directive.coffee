@@ -35,7 +35,12 @@ angular.module 'servicio'
             },
             {
               name: "Configuración de Cuenta"
-              url: "#"
+              url: "#/config"
+              func: vm.noOp
+            },
+            {
+              name: "Users"
+              url: "#/users"
               func: vm.noOp
             },
             {
@@ -58,7 +63,7 @@ angular.module 'servicio'
             },
             {
               name: "Configuración"
-              url: "#"
+              url: "#/config"
               func: vm.noOp
             },
             {

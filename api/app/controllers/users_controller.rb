@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     @user = User.find(params[:id])
-    if @current_user.role_id != "student" @user.update(user_params)
+    if @current_user.role_id != "student" && @user.update(user_params)
       head :no_content
     else
       render json: @user.errors, status: :unprocessable_entity
