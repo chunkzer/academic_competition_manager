@@ -38,14 +38,6 @@ class UsersController < ApplicationController
     render json: @user.errors, status: :unprocessable_entity
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
-  def destroy
-    @user.destroy
-
-    head :no_content
-  end
-
   private
 
     def set_user

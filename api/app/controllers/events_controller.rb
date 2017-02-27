@@ -38,6 +38,11 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update(event_params)
+      EventRequirement.where(event_id: @event.id).map {|er| er.destroy!}
+      requirement_params[:requirements].each do |req|
+        req = Requirement.find(req["id"].to_i)
+        EventRequirement.create({event_id: @event.id, requirement_id: req.id})
+      end
       render json: @event, serializer_params: { current_user: @current_user }, status: :updated
     else
       render json: @event.errors, serializer_params: { current_user: @current_user }, status: :unprocessable_entity
@@ -63,6 +68,6 @@ class EventsController < ApplicationController
     end
 
     def requirement_params
-      params.require(:event).permit(requirements: [:id, :description])
+      params.require(:event).permit(requirements: [:id, :description]) || []
     end
 end
