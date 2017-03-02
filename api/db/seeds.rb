@@ -32,8 +32,9 @@ if Rails.env = "development"
                description: 'Concurso de Matematicas para estudiantes de preparatoria.'
                )
 
-  Requirement.create(description: "Copia de Acta de Nacimiento.")
-  Requirement.create(description: "Foto de frente.")
+  Requirement.create(description: "Copia de Acta de Nacimiento.", enabled: true, specifications: "N/A")
+  Requirement.create(description: "Foto de frente.", enabled: true, specifications: "Sin lentes, gorras, etc...")
+  Requirement.create(description: "Foto de IFE.", enabled: true, specifications: "Por ambos lados")
 
   EventRequirement.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
                           requirement_id: Requirement.find_by(description: "Copia de Acta de Nacimiento.").id

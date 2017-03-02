@@ -1,7 +1,7 @@
 div
   acme-navbar
   div.container
-    button.btn.btn-default.orange-button.pull-right(ng-if="userIsAdmin" ng-click="saveRequirement()")
+    button.btn.btn-default.orange-button.pull-right(ng-if="userIsAdmin" ng-click="newRequirement()")
       p Nuevo Requerimiento
     div.alert.no-subscriptions(align="center" ng-hide="requirements.length > 0") 
       h2 No hay requerimientos definidos

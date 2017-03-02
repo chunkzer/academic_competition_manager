@@ -1,3 +1,3 @@
 class RequirementSerializer < ActiveModel::Serializer
-  attributes :id, :description
+  attributes :id, :description, :enabled, :specifications
 end

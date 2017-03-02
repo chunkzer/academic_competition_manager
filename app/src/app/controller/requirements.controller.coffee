@@ -10,12 +10,12 @@ angular.module "servicio"
       page -= 1 if page != 1
       Event.query({page: page}).then (requirements) -> $scope.requirements = requirements
 
-    $scope.saveRequirement = () ->
+    $scope.newRequirement = () ->
       ModalService.showModal(
         templateUrl: "app/views/modal-templates/requirement.html"
         controller: "requirementCtrl"
         inputs:
-          requirement: {}
+          req: {}
         )
       .then((modal) ->
         modal.element.modal()

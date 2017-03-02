@@ -54,6 +54,6 @@ class RequirementsController < ApplicationController
     end
 
     def requirement_params
-      params.require(:requirement).permit(:description)
+      params.require(:requirement).permit(:description, :enabled, :specifications)
     end
 end
