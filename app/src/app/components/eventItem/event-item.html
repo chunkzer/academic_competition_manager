@@ -20,7 +20,7 @@
   </div>
 
   <div ng-if="vm.userIsAdmin" class="col-xs-4 panel-body">
-    <div class="btn btn-lg btn-default btn-step orange-button" ng-click="attendeeList()">
+    <div class="btn btn-lg btn-default btn-step orange-button" ng-click="vm.toggleCollapse()">
       Lista de Inscripción
     </div>
   </div>
@@ -46,3 +46,7 @@
   </div>
 </div>
 <!-- Button trigger modal -->
+
+<div ng-hide="vm.isCollapsed" class="col-xs-12" uib-collapse="vm.isCollapsed">
+  <attendee-item ng-repeat="sub in vm.event.eventSubscriptions" subscription="sub"> </attendee-item>
+</div>

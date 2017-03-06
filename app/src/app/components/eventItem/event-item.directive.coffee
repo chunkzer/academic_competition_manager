@@ -10,6 +10,13 @@ angular.module 'servicio'
         vm = $scope.vm
         vm.userIsAdmin = localStorage.userIsAdmin()
         vm.userSubscription = vm.event.userSubscription
+        vm.isCollapsed = true
+        toggleCollapse = () ->
+          vm.isCollapsed = !vm.isCollapsed
+
+        vm.toggleCollapse = toggleCollapse
+        vm
+        
         $scope.newSubscription = () ->
           ModalService.showModal(
             templateUrl: "app/views/modal-templates/new-subscription.html"

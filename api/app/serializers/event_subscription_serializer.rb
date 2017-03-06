@@ -10,4 +10,14 @@ class EventSubscriptionSerializer < ActiveModel::Serializer
       data
     end
   end
+
+  def event
+    {:name => object.event.name,
+     id: object.event_id,
+     eventDate: object.event.event_date,
+     registrationDeadline: object.event.registration_deadline,
+     description: object.event.description
+   }
+  end
+
 end

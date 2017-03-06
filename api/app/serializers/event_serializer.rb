@@ -1,5 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :name, :event_date, :registration_deadline, :description, :requirements, :users, :user_subscription
+  attributes :id, :name, :event_date, :registration_deadline, :description, :requirements, :users, :user_subscription, :event_subscriptions
 
   def user_subscription
     current_user = @instance_options[:serializer_params][:current_user]
@@ -13,6 +13,10 @@ class EventSerializer < ActiveModel::Serializer
 
   def registration_deadline
     object.registration_deadline.to_date.iso8601
+  end
+
+  def event_subscriptions
+    object.event_subscriptions.map{ |es| EventSubscriptionSerializer.new(es).attributes}
   end
 
 end
