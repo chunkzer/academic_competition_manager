@@ -34,6 +34,11 @@ angular.module 'servicio'
               func: vm.noOp
             },
             {
+              name: "Configuracion de Requerimientos"
+              url: "#/requirements"
+              func: vm.noOp
+            },
+            {
               name: "Configuración de Cuenta"
               url: "#/config"
               func: vm.noOp

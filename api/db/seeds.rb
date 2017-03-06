@@ -15,11 +15,30 @@ if Rails.env = "development"
               )
 
   User.create(role_id: User.roles[:admin],
-              name: 'Adrianvo',
-              last_name: 'Unison',
-              email: 'adrianvo@yopmail.com',
+              name: Faker::Name.first_name,
+              last_name: Faker::Name.last_name,
+              email: 'admin',
               password: '$2y$10$VohsaZwlcuFRjfLqabvi3u6QVFkjLu7phwChZlfhNIMKEOnS4oF6K'
               )
+
+  5.times do
+    User.create(role_id: User.roles[:admin],
+                name: Faker::Name.first_name,
+                last_name: Faker::Name.last_name,
+                email: Faker::Internet.safe_email,
+                password: '$2y$10$VohsaZwlcuFRjfLqabvi3u6QVFkjLu7phwChZlfhNIMKEOnS4oF6K'
+                )
+  end
+
+  25.times do
+    User.create(role_id: User.roles[:student],
+                name: Faker::Name.first_name,
+                last_name: Faker::Name.last_name,
+                email: Faker::Internet.safe_email,
+                password: '$2y$10$VohsaZwlcuFRjfLqabvi3u6QVFkjLu7phwChZlfhNIMKEOnS4oF6K'
+                )
+  end
+
   Event.create(name: "Concurso de Fisica",
                event_date: Time.now + 5.day,
                registration_deadline: Time.now + 5.day,
@@ -42,6 +61,22 @@ if Rails.env = "development"
   EventRequirement.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
                           requirement_id: Requirement.find_by(description: "Foto de frente.").id
                           )
+
+
+  subscriber_ids = User.where(role_id: 1).where.not(email: 'student1@yopmail.com').pluck(:id)
+  subscriber_ids.shuffle.take(5).each do |subber_id|
+    EventSubscription.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
+                             user_id: subber_id,
+                             approved: true
+                             )
+
+    EventSubscription.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
+                             user_id: subber_id,
+                             approved: false
+                            )
+
+  end
+
 
   EventSubscription.create(event_id: Event.find_by(name: "Concurso de Fisica").id,
                           user_id: User.find_by(email: 'student1@yopmail.com').id,
