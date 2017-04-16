@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <h1>
+    Hola <%= @user.name %>!<br><br>
+  </h1>
+  <p>
+    Casi has terminado el proceso de registro en: <%=@event.name %>.<br>
+  </p>
+  <p>
+    Sin embargo, aun hay requerimientos con los que no has cumplido: <br>
+  </p>
+  <% @documents.each do |doc| %>
+   <li><%= doc.name %>:
+     <br><%= doc.issue %>
+   <li>
+  <%end %>
+  <p>
+    Para entrar al sistema de concursos academicos ve aqui: <%= Figaro.env.BASE_URL %> <br>
+  </p>
+  <br><br>
+  <p>Recuerda que para quedar registrado con exito a: <%=@event.name %>,
+  Los documentos que mandes tienen que ser aprobados por personal de la Universidad de Sonora antes de la
+  fecha limite (<%=@event.registration_deadline %>)
+  </p>
+
+  Te deseamos lo mejor,<br><br>
+    Departamento de Ciencias Exactas, UniSon<br>
+
+</body>
+</html>

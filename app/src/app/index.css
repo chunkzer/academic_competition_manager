@@ -7,6 +7,15 @@ div.item-container{
   align-items: center;
 }
 
+div.item-container-thin{
+  background-color: inherit;
+}
+
+.item-container-thin {
+  display:flex;
+  align-items: center;
+}
+
 .active-item{
   padding: 0% 0%;
   cursor: pointer;
