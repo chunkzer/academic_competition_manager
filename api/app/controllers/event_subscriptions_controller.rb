@@ -7,7 +7,7 @@ class EventSubscriptionsController < ApplicationController
     if @current_user.super_admin?
       @event_subscriptions = EventSubscription.all
     elsif @current_user.admin?
-      @event_subscriptions = EventSubscription.event_is_upcoming.where(approved: false)
+      @event_subscriptions = EventSubscription.event_is_upcoming.where(approved: false).select {|es| es.pending_review}
     else
       @event_subscriptions = @current_user.event_subscriptions.event_is_upcoming.order("approved DESC")
     end

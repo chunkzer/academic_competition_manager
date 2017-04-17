@@ -28,4 +28,19 @@ class EventSubscription < ActiveRecord::Base
     end
   end
 
+  def pending_review
+    subscription_requirements = self.event.requirements.pluck(:id).map {|x| [x, 0]}.to_h
+    if subscription_requirements.present?
+      user_documents_req_id = self.user.documents_pending_review.pluck(:requirement_id)
+      user_documents_req_id.each do |req|
+        if subscription_requirements[req].present?
+          subscription_requirements[req] += 1
+        end
+      end
+      subscription_requirements.one? {|r| r[1] == 1}
+    else
+      false
+    end
+  end
+
 end
