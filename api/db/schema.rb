@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306092355) do
+ActiveRecord::Schema.define(version: 20170417022059) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   limit: 4,     default: 0, null: false
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20170306092355) do
 
   create_table "documents", force: :cascade do |t|
     t.integer  "user_id",        limit: 4
-    t.integer  "event_id",       limit: 4
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.integer  "requirement_id", limit: 4

@@ -25,7 +25,6 @@ class DocumentsController < ApplicationController
   def create
     path =  path_params.present? ? "data:#{path_params['filetype']};base64, #{path_params['base64']}" : nil
     @document = Document.create(user_id: @current_user.id,
-                   event_id: document_params[:event_id],
                    requirement_id: document_params[:requirement_id],
                    state: document_params[:state],
                    path: path
@@ -44,8 +43,8 @@ class DocumentsController < ApplicationController
     @document.update(document_params)
     @document.path = "data:#{path_params['filetype']};base64, #{path_params['base64']}" if path_params["filetype"].present?
     if @document.save
-      if document.state == "approved"
-        document.user.event_subscriptions.map do |es|
+      if @document.state == "approved"
+        @document.user.event_subscriptions.map do |es|
           es[:approved] = es.user_requirements_status
           es.save
         end
@@ -71,7 +70,7 @@ class DocumentsController < ApplicationController
     end
 
     def document_params
-      params.require(:document).permit(:user_id, :event_id, :requirement_id, :state, :path)
+      params.require(:document).permit(:user_id, :requirement_id, :state, :path)
     end
 
     def path_params

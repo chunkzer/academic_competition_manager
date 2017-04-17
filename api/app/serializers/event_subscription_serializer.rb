@@ -5,7 +5,7 @@ class EventSubscriptionSerializer < ActiveModel::Serializer
     reqs = object.event.requirements
     reqs.map do |r|
       data = RequirementSerializer.new(r).attributes
-      data[:document] = Document.find_by(requirement_id: r.id, user_id: object.user_id, event_id: object.event_id)
+      data[:document] = Document.find_by(requirement_id: r.id, user_id: object.user_id)
       data[:document].present? ? DocumentSerializer.new(data[:document]).attributes : nil
       data
     end
@@ -17,7 +17,7 @@ class EventSubscriptionSerializer < ActiveModel::Serializer
      eventDate: object.event.event_date,
      registrationDeadline: object.event.registration_deadline,
      description: object.event.description
-   }
+    }
   end
 
 end

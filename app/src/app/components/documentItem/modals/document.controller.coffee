@@ -10,7 +10,6 @@ angular.module 'servicio'
       $scope.requirement.document.state = "pending_review"
       doc = $scope.requirement.document
       if doc.id == undefined
-        doc.event_id = $scope.event.id
         doc.requirement_id = $scope.requirement.id
         new Document(doc).create()
       else

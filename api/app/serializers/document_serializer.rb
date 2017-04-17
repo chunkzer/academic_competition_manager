@@ -1,12 +1,8 @@
 class DocumentSerializer < ActiveModel::Serializer
-  attributes :id, :path, :user_id, :event_id, :state, :requirement, :image, :event
+  attributes :id, :path, :user_id, :state, :requirement, :image
 
   def requirement
     object.requirement.description
-  end
-
-  def event
-    object.event.name
   end
 
   def image

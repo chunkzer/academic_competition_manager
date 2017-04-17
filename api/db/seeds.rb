@@ -39,26 +39,38 @@ if Rails.env = "development"
                 )
   end
 
-  Event.create(name: "Concurso de Fisica",
+ Event.create(name: "Concurso de Fisica",
                event_date: Time.now + 5.day,
                registration_deadline: Time.now + 5.day,
                description: 'Concurso de Fisica para estudiantes de preparatoria.'
                )
 
-  Event.create(name: "Concurso de Matematicas",
+ Event.create(name: "Concurso de Matematicas",
                event_date: Time.now + 5.day,
                registration_deadline: Time.now + 5.day,
                description: 'Concurso de Matematicas para estudiantes de preparatoria.'
                )
+ Event.create(name: "Concurso de Quimica",
+              event_date: Time.now + 5.day,
+              registration_deadline: Time.now + 5.day,
+              description: 'Concurso de Matematicas para estudiantes de preparatoria.'
+              )
 
   Requirement.create(description: "Copia de Acta de Nacimiento.", enabled: true, specifications: "N/A")
   Requirement.create(description: "Foto de frente.", enabled: true, specifications: "Sin lentes, gorras, etc...")
   Requirement.create(description: "Foto de IFE.", enabled: true, specifications: "Por ambos lados")
 
+
   EventRequirement.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
                           requirement_id: Requirement.find_by(description: "Copia de Acta de Nacimiento.").id
                           )
   EventRequirement.create(event_id: Event.find_by(name: "Concurso de Matematicas").id,
+                          requirement_id: Requirement.find_by(description: "Foto de frente.").id
+                          )
+  EventRequirement.create(event_id: Event.find_by(name: "Concurso de Quimica").id,
+                          requirement_id: Requirement.find_by(description: "Copia de Acta de Nacimiento.").id
+                          )
+  EventRequirement.create(event_id: Event.find_by(name: "Concurso de Quimica").id,
                           requirement_id: Requirement.find_by(description: "Foto de frente.").id
                           )
 

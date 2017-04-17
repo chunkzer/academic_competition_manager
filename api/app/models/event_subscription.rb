@@ -14,16 +14,18 @@ class EventSubscription < ActiveRecord::Base
   end
 
   def user_requirements_status
-    subscription_requirements = self.event.requirements.pluck(:id).map {|x| x.to_sym => 0}}
-    user_documents_req_ids = self.user.approved_documents.pluck(:requirement_id)
-
-    user_documents_req_id.each do |req|
-      if subscription_requirements[req.to_sym].present?
-        subscription_requirements[req.to_sym] += 1
+    subscription_requirements = self.event.requirements.pluck(:id).map {|x| [x, 0]}.to_h
+    if subscription_requirements.present?
+      user_documents_req_id = self.user.approved_documents.pluck(:requirement_id)
+      user_documents_req_id.each do |req|
+        if subscription_requirements[req].present?
+          subscription_requirements[req] += 1
+        end
       end
+      subscription_requirements.all? {|r| r[1] == 1}
+    else
+      true
     end
-
-    subscription_requirements.all? {|r| r[1] == 1}
   end
 
 end

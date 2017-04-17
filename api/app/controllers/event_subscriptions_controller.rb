@@ -32,7 +32,6 @@ class EventSubscriptionsController < ApplicationController
           requirement[:doc].symbolize_keys
           path = "data:#{requirement[:doc][:filetype]};base64, #{requirement[:doc][:base64]}"
           Document.create(user_id: @event_subscription.user_id,
-                         event_id: @event_subscription.event_id,
                          requirement_id: requirement[:id],
                          state: "pending_review",
                          path: path
@@ -59,7 +58,6 @@ class EventSubscriptionsController < ApplicationController
         path = "data:#{requirement[:doc][:filetype]};base64, #{requirement[:doc][:base64]}"
         Document.update(id: requirement[:doc][:id],
                        user_id: @event_subscription.user_id,
-                       event_id: @event_subscription.event_id,
                        requirement_id: requirement[:id],
                        state: "pending_review",
                        path: path

@@ -1,8 +1,6 @@
 div
   acme-navbar
   div.container
-    button.btn.btn-default.orange-button.pull-right(ng-if="userIsAdmin")
-      p Nuevo Evento
     h1(align="center" ng-hide="userIsAdmin") Tus Eventos
     h1(align="center" ng-hide="!userIsAdmin") Revisiones pendientes
     div.row

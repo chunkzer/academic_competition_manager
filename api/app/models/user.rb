@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def approved_documents
-    self.documents.where(state: "approved")
+    self.documents.where(state: Document.state[:approved])
   end
 
   def self.roles
