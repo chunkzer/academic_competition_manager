@@ -25,7 +25,7 @@ class EventSubscriptionsController < ApplicationController
   def create
     @event_subscription = EventSubscription.new(event_subscription_params)
     @event_subscription[:approved] = @event_subscription.user_requirements_status
-    if @event_subscription.save
+    if @event_subscription.save && !@event_subscription[:approved]
       file_params.each do |requirement|
         if(requirement["doc"])
           requirement.symbolize_keys
