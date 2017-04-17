@@ -24,7 +24,7 @@ class EventSubscriptionsController < ApplicationController
   # POST /event_subscriptions.json
   def create
     @event_subscription = EventSubscription.new(event_subscription_params)
-    @event_subscription[:approved] = @event_subscription.event.requirements.empty?
+    @event_subscription[:approved] = @event_subscription.user_requirements_status
     if @event_subscription.save
       file_params.each do |requirement|
         if(requirement["doc"])

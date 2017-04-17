@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def approved_documents
+    self.documents.where(state: "approved")
+  end
+
   def self.roles
     {
       student: 1,

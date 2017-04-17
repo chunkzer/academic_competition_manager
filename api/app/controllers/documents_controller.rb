@@ -44,6 +44,12 @@ class DocumentsController < ApplicationController
     @document.update(document_params)
     @document.path = "data:#{path_params['filetype']};base64, #{path_params['base64']}" if path_params["filetype"].present?
     if @document.save
+      if document.state == "approved"
+        document.user.event_subscriptions.map do |es|
+          es[:approved] = es.user_requirements_status
+          es.save
+        end
+      end
       head :no_content
     else
       render json: @document.errors, status: :unprocessable_entity
