@@ -5,6 +5,7 @@ class RequirementsController < ApplicationController
   # GET /requirements.json
   def index
     @requirements = Requirement.all
+    @requirements = @requirements.where(Requirement.arel_table[:description].matches("%#{search_params[:search]}%")) if search_params[:search].present?
 
     render json: @requirements
   end

@@ -3,6 +3,9 @@ angular.module "servicio"
     $scope.userIsAdmin = localStorage.userIsAdmin()
     page = 1
     Event.query({page: page}).then (events) -> $scope.events = events
+    $scope.searchQuery = () ->
+      page = 1
+      Event.query({page: 1, search: $scope.query}).then (events) -> $scope.events = events
     $scope.nextPage = () ->
       page += 1
       Event.query({page: page}).then (events) -> $scope.events = events

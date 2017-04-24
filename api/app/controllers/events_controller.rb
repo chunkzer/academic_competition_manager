@@ -9,6 +9,9 @@ class EventsController < ApplicationController
     else
       @events = Event.upcoming.order(:registration_deadline)
     end
+
+    @events = @events.where(Event.arel_table[:name].matches("%#{search_params[:search]}%")) if search_params[:search].present?
+
     render json: @events, serializer_params: { current_user: @current_user }
   end
 

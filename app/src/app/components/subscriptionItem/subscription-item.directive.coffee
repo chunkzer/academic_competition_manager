@@ -11,7 +11,8 @@ angular.module 'servicio'
         vm.userIsAdmin = localStorage.userIsAdmin()
         vm.isCollapsed = true
         toggleCollapse = () ->
-          vm.isCollapsed = !vm.isCollapsed
+          if !vm.subscription.approved
+            vm.isCollapsed = !vm.isCollapsed
 
         vm.toggleCollapse = toggleCollapse
         vm

@@ -4,6 +4,14 @@ class User < ActiveRecord::Base
   has_many   :event_subscriptions
   has_many   :documents
 
+  SEPARATOR = Arel::Nodes.build_quoted(' ')
+
+  def self.concat
+    Arel::Nodes::NamedFunction.new(
+     'concat',[User.arel_table[:name], SEPARATOR, User.arel_table[:last_name], SEPARATOR, User.arel_table[:email]]
+    )
+  end
+
   def events
     self.event_subscriptions.map {|es| es.event}
   end

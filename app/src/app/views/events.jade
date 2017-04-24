@@ -1,6 +1,10 @@
 div
   acme-navbar
   div.container
+    div.pull-left
+      input(type="text" placeholder="Busqueda" ng-model="query")
+      button.btn.btn-default(ng-click="searchQuery()")
+        span( class="glyphicon glyphicon-search")
     button.btn.btn-default.orange-button.pull-right(ng-if="userIsAdmin" ng-click="newEvent()")
       p Nuevo Evento
     div.alert.no-subscriptions(align="center" ng-hide="events.length > 0") 

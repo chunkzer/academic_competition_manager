@@ -1,6 +1,10 @@
 div
   acme-navbar
   div.container
+    div.pull-left
+      input(type="text" placeholder="Busqueda" ng-model="query")
+      button.btn.btn-default(ng-click="searchQuery()")
+        span( class="glyphicon glyphicon-search")
     div.alert.no-subscriptions(align="center" ng-hide="users.length > 0") 
       h2 No existen otros usuarios
     div.alert.no-subscriptions(align="center" ng-show="users.length > 0") 

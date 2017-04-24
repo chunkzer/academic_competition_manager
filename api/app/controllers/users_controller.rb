@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.where("role_id < ?", User.roles[@current_user.role_id.to_sym])
+    @users = @users.where(User.concat.matches("%#{search_params[:search]}%")) if search_params[:search].present?
     render json: @users
   end
 

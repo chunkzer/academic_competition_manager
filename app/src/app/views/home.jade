@@ -2,7 +2,11 @@ div
   acme-navbar
   div.container
     h1(align="center" ng-hide="userIsAdmin") Tus Eventos
+      div.alert.no-subscriptions(align="center" ng-hide="subscriptions.length > 0") 
+        h2 Aun no te has subscrito a ningun evento...
     h1(align="center" ng-hide="!userIsAdmin") Revisiones pendientes
+      div.alert.no-subscriptions(align="center" ng-hide="subscriptions.length > 0") 
+        h2 No hay subscripciones con revisiones pednientes...
     div.row
       div.col-xs-6.col-md-6(align="left")
         button#previous-page-button.btn.btn-default(ng-click="previousPage()")
