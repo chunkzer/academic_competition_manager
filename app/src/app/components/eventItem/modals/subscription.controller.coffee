@@ -1,5 +1,5 @@
 angular.module 'servicio'
-  .controller "subscriptionCtrl", ($scope, close, item, EventSubscription, ModalService, localStorage) ->
+  .controller "subscriptionCtrl", ($scope, close, item, EventSubscription, ModalService, localStorage, $state) ->
     $scope.item = item
     $scope.subscribe = () ->
       data =
@@ -10,8 +10,9 @@ angular.module 'servicio'
         data.id = $scope.item.userSubscription.id
         new EventSubscription(data).update()
       else
-        new EventSubscription(data).create()
-      close({}, 200)
+        new EventSubscription(data).create() ->
+      close({}, 300)
+      $state.go('home')
 
-    $scope.dismissModal = (result) ->
-      close(result, 200)
+    $scope.dismissModal = () ->
+      close({}, 200)

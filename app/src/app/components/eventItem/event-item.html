@@ -21,16 +21,23 @@
 
   <div ng-if="vm.userIsAdmin" class="col-xs-4 panel-body">
     <div class="btn btn-lg btn-default btn-step orange-button" ng-click="vm.toggleCollapse()">
-      Lista de Inscripción
+      Ver Lista de Inscripción
     </div>
+
+    <a href="{{vm.download_url}}", download="{{vm.event.name}}.csv" target="_blank"> 
+    <div class="btn btn-lg btn-default btn-step orange-button">
+      Exportar Lista a CSV
+    </div>
+    </a>
   </div>
 
   <div class="col-xs-4 panel-body" >
     <div ng-if="!vm.userIsAdmin">
       <div class="btn btn-lg btn-default btn-step orange-button" >
-        <div ng-click="newSubscription()">
-          <div ng-if="!vm.userSubscription"> Registrate. </div>
-          <div ng-if="vm.userSubscription && !vm.userSubscription.approved" >Revisa Documentos. </div>
+        <div ng-click="newSubscription()" ng-if="!vm.userSubscription"> Registrate. </div>
+
+        <div ng-if="vm.userSubscription && !vm.userSubscription.approved">
+          <span ng-click="goToSub()">En espera...</span>
         </div>
         <div ng-if="vm.userSubscription && vm.userSubscription.approved"> Inscripción aprobada! </div>
       </div>

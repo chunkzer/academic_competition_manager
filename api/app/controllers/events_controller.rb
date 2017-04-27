@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :update, :destroy]
+  before_action :set_event, only: [:show, :update, :destroy, :csv]
 
   # GET /events
   # GET /events.json
@@ -19,6 +19,10 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     render json: @event, serializer_params: { current_user: @current_user }
+  end
+
+  def csv
+    send_data @event.to_csv, disposition: "attachment", filename: "events-#{Date.today}-#{@event.name}.csv"
   end
 
   # POST /events

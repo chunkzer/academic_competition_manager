@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :user_sessions, only: [:create]
     resources :documents
     get '/uploads/document/path/:id/file.jpeg' => 'documents#view'
+    get '/events/:id/csv' => 'events#csv'
+
 
  end
 
