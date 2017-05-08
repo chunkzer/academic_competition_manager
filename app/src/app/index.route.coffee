@@ -56,8 +56,8 @@ angular.module 'servicio'
 
       .state "config",
         url: "/config",
-        templateUrl: "app/views/config.html",
-        controller: "ConfigCtrl"
+        templateUrl: "app/views/configuration.html",
+        controller: "ConfigurationCtrl"
         onEnter: ['localStorage', '$state', '$timeout',(localStorage, $state, $timeout) ->
           $timeout ->
             if !localStorage.get("signedIn")

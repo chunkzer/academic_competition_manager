@@ -33,14 +33,16 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     @user = User.find(params[:id])
-    if @current_user.id == @user.id || User.roles[@current_user.role_id.to_sym] < user_params[:role_id]
-      head :no_content if @user.update(user_params)
+    if @current_user.id == @user.id || User.roles[@current_user.role_id.to_sym] < @user.role_id
+      if user_params[:password].present?
+        @user.password = user_params[:password]
+        @user.encrypt_password
+      end
+      render nothing: true, status: 200 if @user.update(user_params.except(:password))
     end
-    render json: @user.errors, status: :unprocessable_entity
   end
 
   private
-
     def set_user
       @user = User.find(params[:id])
     end

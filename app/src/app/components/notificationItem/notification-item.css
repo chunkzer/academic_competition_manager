@@ -1,0 +1,12 @@
+div.container{
+  margin: 15px 15px 15px 15px;
+}
+
+input{
+  width: 90%;
+  margin: 15px 15px 15px 0;
+}
+
+div.forms{
+  width: 50%;
+}

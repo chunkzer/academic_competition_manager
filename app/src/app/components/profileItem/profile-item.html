@@ -1,0 +1,20 @@
+<div class="container" align="left">
+  <div class="forms">
+    <b>Name</b><br>
+    <input type="text" ng-model="user.name"></input><br>
+    <b>Last Name</b><br>
+    <input type="text" ng-model="user.lastName"></input><br>
+    <b>Email</b><br>
+    <input type="text" ng-model="user.email"></input><br>
+    <b>Password</b><br>
+    <input type="text" ng-model="user.password"></input><br>
+  </div>
+
+  <button class="btn btn-default" ng-click="updateUser()"> Guardar Cambios</button>
+
+  <div class="toast" ng-show="toastDisplay">
+    <h2 align="center">
+      Tus cambios han sido guardados con exito.
+    </h2>
+  </div>
+</div>

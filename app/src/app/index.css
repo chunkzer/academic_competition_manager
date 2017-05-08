@@ -1,3 +1,20 @@
+.sidebar, .content{
+  height: 700px;
+  border-radius: 4px;
+  border: 1px solid #777;
+}
+.sidebar{
+  color: #fff;
+  background: #777;
+  width: 20%;
+  position: absolute;
+}
+.content{
+  width: 80%;
+  margin-left: 300px;
+  background: #e6ebf4;
+}
+
 div.item-container{
   background-color: inherit;
 }
