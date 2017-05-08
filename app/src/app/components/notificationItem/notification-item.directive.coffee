@@ -1,8 +1,8 @@
 angular.module 'servicio'
-  .directive 'profileItem', () ->
+  .directive 'notificationItem', () ->
     directive =
       restrict: 'E'
-      templateUrl: 'app/components/profileItem/profile-item.html'
+      templateUrl: 'app/components/notificationItem/notification-item.html'
       controllerAs: 'vm'
       scope: user: '='
       bindToController: true
