@@ -31,6 +31,10 @@ class User < ActiveRecord::Base
     self.documents.where(state: Document.state[:approved])
   end
 
+  def reject_and_unsubmitted
+    self.documents.where(state: [Document.state[:approved], Document.state[:unsubmitted]])
+  end
+
   def documents_pending_review
     self.documents.where(state: Document.state[:pending_review])
   end

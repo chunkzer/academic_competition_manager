@@ -8,26 +8,24 @@
     Hola <%= @user.name %>!<br><br>
   </h1>
   <p>
-    Casi has terminado el proceso de registro en: <%=@event.name %>.<br>
+    Hay algunos eventos a los que estas registrado pero el proceso aun no esta completo!
   </p>
   <p>
     Sin embargo, aun hay requerimientos con los que no has cumplido: <br>
   </p>
-  <% @documents.each do |doc| %>
-   <li><%= doc.name %>:
-     <br><%= doc.issue %>
-   <li>
-  <%end %>
+  <% @events.each do |event| %>
+   <li><%= event.name %>:
+  <% end %>
   <p>
     Para entrar al sistema de concursos academicos ve aqui: <%= Figaro.env.BASE_URL %> <br>
   </p>
   <br><br>
-  <p>Recuerda que para quedar registrado con exito a: <%=@event.name %>,
-  Los documentos que mandes tienen que ser aprobados por personal de la Universidad de Sonora antes de la
-  fecha limite (<%=@event.registration_deadline %>)
+  <p>Recuerda que para quedar registrado con exito a un evento
+    los documentos que mandes tienen que ser aprobados por personal de la Universidad de Sonora antes de la
+  fecha limite del evento.
   </p>
 
-  Te deseamos lo mejor,<br><br>
+  Nuestros mejores deseo,<br><br>
     Departamento de Ciencias Exactas, UniSon<br>
 
 </body>

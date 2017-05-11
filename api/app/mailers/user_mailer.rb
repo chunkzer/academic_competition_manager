@@ -21,8 +21,16 @@ class UserMailer < ApplicationMailer
 
   def rejection_email user
     @user = user
+    @documents = Documents.reject_and_unsubmitted.where(user_id: user.id)
     get_target_email_user
-    mail(to: @target_email, subject:"TUTOR: Información sobre sus alumnos",template_path:'user_mailer', template_name: 'rejection_email')
+    mail(to: @target_email, subject:"Hubo un problema con tu inscripción", template_path:'user_mailer', template_name: 'rejection_email')
+  end
+
+  def submission_reminder_email user
+    @user = user
+    @event_subscriptions = user.event_subscriptions.where(approved: false)
+    get_target_email_user
+    mail(to: @target_email, subject:"Recuerda terminar tu proceso de inscripción!",template_path:'user_mailer', template_name: 'submission_reminder_email')
   end
 
 end
