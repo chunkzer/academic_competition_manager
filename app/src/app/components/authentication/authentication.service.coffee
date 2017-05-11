@@ -17,7 +17,7 @@ angular.module 'servicio'
         role_id: null
         user_id: null
         email: null
-      $state.go("/login")
+      $state.go("login")
       location.reload()
       return
 

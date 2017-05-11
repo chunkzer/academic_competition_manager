@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   enum role_id: [:zero, :student, :tutor, :admin, :super_admin]
   has_many   :event_subscriptions
   has_many   :documents
+  has_many   :user_notifications
 
   SEPARATOR = Arel::Nodes.build_quoted(' ')
 

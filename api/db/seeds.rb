@@ -14,6 +14,13 @@ if Rails.env = "development"
               password: '$2y$10$VohsaZwlcuFRjfLqabvi3u6QVFkjLu7phwChZlfhNIMKEOnS4oF6K'
               )
 
+  User.create(role_id: User.roles[:tutor],
+              name: 'Placido',
+              last_name: 'Domingo',
+              email: 'tutor1@yopmail.com',
+              password: '$2y$10$VohsaZwlcuFRjfLqabvi3u6QVFkjLu7phwChZlfhNIMKEOnS4oF6K'
+              )
+
   User.create(role_id: User.roles[:admin],
               name: Faker::Name.first_name,
               last_name: Faker::Name.last_name,

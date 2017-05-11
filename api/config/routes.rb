@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :documents
     get '/uploads/document/path/:id/file.jpeg' => 'documents#view'
     get '/events/:id/csv' => 'events#csv'
+    post '/users/tutor_follow/' => 'users#tutor_follow'
 
 
  end

@@ -8,6 +8,11 @@ angular.module 'servicio'
       bindToController: true
       controller: ($scope, $state, localStorage, User) ->
         $scope.user = {}
+        $scope.notifications = {}
         User.get(localStorage.get("user_id")).then (user) ->
           $scope.user = user
-          console.log(user)
+          $scope.notifications = user.notifications
+
+        $scope.updateUser = () ->
+          new User($scope.user).update() ->
+            $scope.toastDisplay = true

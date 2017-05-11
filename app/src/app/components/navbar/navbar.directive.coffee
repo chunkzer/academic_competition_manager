@@ -21,7 +21,7 @@ angular.module 'servicio'
             return true
           false
 
-        if userRole != "student"
+        if userRole == "admin" || userRole == "super_admin"
           vm.menu = [
             {
               name: "Aplicaciones"
@@ -55,28 +55,43 @@ angular.module 'servicio'
             }
           ]
         else
-          vm.menu = [
-            {
-              name: "Mis Eventos"
-              url: "#/home"
-              func: vm.noOp
-            },
-            {
-              name: "Proximos Eventos"
-              url: "#/events"
-              func: vm.noOp
-            },
-            {
-              name: "Configuración"
-              url: "#/config"
-              func: vm.noOp
-            },
-            {
-              name: "Cerrar Sesión"
-              url: "#"
-              func: vm.signOut
-            }
-          ]
+          if userRole == "student"
+            vm.menu = [
+              {
+                name: "Mis Eventos"
+                url: "#/home"
+                func: vm.noOp
+              },
+              {
+                name: "Proximos Eventos"
+                url: "#/events"
+                func: vm.noOp
+              },
+              {
+                name: "Configuración"
+                url: "#/config"
+                func: vm.noOp
+              },
+              {
+                name: "Cerrar Sesión"
+                url: "#"
+                func: vm.signOut
+              }
+            ]
+          else
+            vm.menu = [
+              {
+                name: "Seguir Estudiantes"
+                url: "#/users"
+                func: vm.noOp
+              },
+              {
+                name: "Cerrar Sesión"
+                url: "#"
+                func: vm.signOut
+              }
+            ]
+
 
         $scope.$on 'signOut', (event, data) -> $scope.signOut()
 

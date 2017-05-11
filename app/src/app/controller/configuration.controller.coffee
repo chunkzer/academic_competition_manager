@@ -6,6 +6,7 @@ angular.module "servicio"
     $scope.content = "Perfil"
 
     $scope.setContent = (content) ->
+      console.log(content)
       $scope.content = content
 
     $scope.noOp = () ->
@@ -16,24 +17,24 @@ angular.module "servicio"
         {
           name: "Perfil"
           url: "#"
-          func: $scope.noOp
-        },
-        {
-          name: "Notificaciones"
-          url: "#"
-          func: $scope.noOp
+          func: $scope.setContent
         }
+        # ,{
+        #   name: "Notificaciones"
+        #   url: "#"
+        #   func: $scope.setContent
+        # }
       ]
     else
       $scope.menu = [
         {
           name: "Perfil"
           url: "#"
-          func: $scope.noOp
-        },
-        {
-          name: "Notificaciones"
-          url: "#"
-          func: $scope.noOp
+          func: $scope.setContent
         }
+        # ,{
+        #   name: "Notificaciones"
+        #   url: "#"
+        #   func: $scope.setContent
+        # }
       ]

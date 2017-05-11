@@ -1,16 +1,24 @@
-<div class="container" align="left">
-  <div class="forms">
-    <b>Name</b><br>
-    <input type="text" value="{{user.name}}"></input><br>
-    <b>Last Name</b><br>
-    <input type="text" value="{{user.lastName}}"></input><br>
-    <b>Email</b><br>
-    <input type="text" value="{{user.email}}"></input><br>
-    <b>Password</b><br>
-    <input type="text"></input><br>
-  </div>
+<div class="form-container" align="left">
+  <p> Notificame 1 semana antes de que ocurran eventos que sigo.
+    <toggle-switch ng-model="notifications.weekly" ng-click="vm.toggle('weekly')"><toggle-switch>
+  </p>
 
-  <!-- <div class="profilePic">
-    <img ng-src="{{root}}/api/{{requirement.document.path.url}}">
-  </div> -->
+  <p> Notificame 1 semana antes de que ocurran eventos que sigo.
+    <toggle-switch ng-model="notifications.daily" ng-click="vm.toggle('daily')"><toggle-switch>
+  </p>
+
+  <!-- <p> Notificame sobre rechazos de documentación asociados con eventos que sigo.
+    <toggle-switch ng-model="notifications.on_rejection" ng-click="vm.toggle('on_rejection')"><toggle-switch>
+  </p>
+
+  <p> Notificame cuando acepten a un alumno en eventos que sigo.
+    <toggle-switch ng-model="notifications.daily" ng-click="vm.toggle('daily')"><toggle-switch>
+  </p>
+
+  <p> Notificame cuando inicie la inscripción un alumno.
+    <toggle-switch ng-model="notifications.daily" ng-click="vm.toggle('daily')"><toggle-switch>
+  </p> -->
+
+
+  <button class="btn btn-default" ng-click="updateUser()"> Guardar Cambios</button>
 </div>

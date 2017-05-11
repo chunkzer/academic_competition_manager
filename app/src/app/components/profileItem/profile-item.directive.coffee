@@ -13,6 +13,5 @@ angular.module 'servicio'
           $scope.user = user
 
         $scope.updateUser = () ->
-          console.log("Ok...")
           new User($scope.user).update() ->
             $scope.toastDisplay = true
