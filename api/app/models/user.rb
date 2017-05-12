@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
     self.documents.where(state: Document.state[:pending_review])
   end
 
+  def send_tutor_status_email
+    UserMailer.tutor_status_email(self).deliver_now
+  end
+
   def self.roles
     {
       student: 1,
@@ -48,5 +52,39 @@ class User < ActiveRecord::Base
     }
   end
 
+  def tutor_csv_report
+    if self.role_id == 2
+      csv_data = CSV.generate do |csv|
+        csv << self.header_columns
+        TutorUsers.where(tutor_id: self.id).each do |tu|
+          csv << self.csv_row(tu)
+        end
+      end
+      csv_data
+    end
+  end
+
+  private
+  def header_columns
+    headers = []
+    headers << "Correo" << "Nombre" << "Apellido" << "Eventos Registrados Sin Aprobar" << "Eventos Registrados Aprobados "
+  end
+
+  def csv_row tu
+    row << tu.user.email
+    if tu.user_id.present?
+      @user = tu.user
+      row << (@user.name ||= "No esta presente") << (@user.last_name ||= "No esta presente")
+      user_events =  @user.event_subscriptions.where(approved: false).map {|es| es.event}
+      future_approved = user_events.select {|e| e.event_date > Time.now }
+      row << future_approved.map {|fe| fe.name}
+
+      user_events =  @user.event_subscriptions.where(approved: true).map {|es| es.event}
+      future_approved = user_events.select {|e| e.event_date > Time.now }
+      row << future_approved.map {|fe| fe.name}
+    else
+      row << "No esta presente" << "No esta presente" << "Ninguno" << "Este Usuario no ha entrado a la plataforma"
+    end
+  end
 
 end

@@ -13,10 +13,11 @@ class UserMailer < ApplicationMailer
     mail(to: @target_email, subject:"Plataforma concursos Unison",template_path:'user_mailer', template_name: 'welcome_email')
   end
 
-  def tutor_status_email tutor, event
+  def tutor_status_email tutor
     @tutor = tutor
+    followed_users = TutorUser.where(tutor_id: tutor.id)
     get_target_email_user
-    mail(to: @target_email, subject:"TUTOR: Información sobre sus alumnos",template_path:'user_mailer', template_name: 'tutor_status_email')
+    mail(to: @target_email, subject:"TUTOR: Información sobre sus alumnos", template_path:'user_mailer', template_name: 'tutor_status_email')
   end
 
   def rejection_email user
@@ -30,6 +31,7 @@ class UserMailer < ApplicationMailer
     @user = user
     @event_subscriptions = user.event_subscriptions.where(approved: false)
     get_target_email_user
+    attachments['reporte.csv'] = user.to_csv
     mail(to: @target_email, subject:"Recuerda terminar tu proceso de inscripción!",template_path:'user_mailer', template_name: 'submission_reminder_email')
   end
 
