@@ -14,6 +14,8 @@ gem 'pry', '~> 0.10.1'
 #MYSQL adapter
 gem 'mysql2', '~> 0.3.20'
 
+gem 'jquery-rails', "~> 2.3.0"
+
 #Puma server
 gem 'puma'
 

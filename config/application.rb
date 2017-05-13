@@ -14,6 +14,7 @@ module Api
     config.log_level = :debug
     config.log_tags  = [:subdomain, :uuid]
     config.logger    = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+    config.assets.initialize_on_precompile = false
 
     config.active_job.queue_adapter = :delayed_job
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
